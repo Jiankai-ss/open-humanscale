@@ -17,7 +17,7 @@ template = '''<!doctype html>
 </main></div><footer class="footer"><span>Open-HumanScale · 文稿与配图预览</span><span>HUMAN + ROBOT EXPERIENCE → CAPABILITY</span></footer>
 <dialog id="image-dialog" aria-labelledby="image-caption"><div class="dialog-top"><span id="image-caption"></span><button aria-label="关闭图片">×</button></div><img alt=""></dialog><div class="toast" role="status" aria-live="polite" hidden></div>
 </body></html>'''
-site_url = 'https://open-humanscale-stories.jiankai-me.chatgpt.site'
+site_url = 'https://jiankai-ss.github.io/open-humanscale'
 share_metadata = f'''<link rel="canonical" href="{site_url}/"><meta property="og:type" content="website"><meta property="og:url" content="{site_url}/"><meta property="og:title" content="Open-HumanScale · 两篇研究解读"><meta property="og:description" content="从人类与机器人混合数据Scaling，到零样本操作、视觉目标ICL与长程任务。"><meta property="og:image" content="{site_url}/assets/zero-shot-tasks-zoom.jpg">'''
 (DIST / 'index.html').write_text(template.replace('</head>', share_metadata + '</head>').replace('ARTICLE_ONE', articles[0]).replace('ARTICLE_TWO', articles[1]))
 

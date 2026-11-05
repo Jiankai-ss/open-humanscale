@@ -22,7 +22,8 @@ Open-HumanScale 双篇公众号文稿 / v2 / 2026-11-05
 3. 最终项目URL、团队署名、代码/数据/权重发布状态。
 本版未对这些未核实信息作额外断言。
 
-此项目为本地文稿预览，未创建云端站点。
+GitHub Pages：https://jiankai-ss.github.io/open-humanscale/
+发布：在仓库 Settings → Pages 中选择 GitHub Actions；pr 分支推送后自动构建并发布 dist 目录。
 
 v2更新：第一篇新增8段zero-shot demo，第二篇新增两组成对ICL视频；复用项目页两张雪山榜单动画，附完整成绩表。官方RoboTwin榜单数据核对于2026-11-05（数据自身更新时间2026-10-30）。
 
