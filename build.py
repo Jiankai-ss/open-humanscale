@@ -5,6 +5,7 @@ import re
 ROOT = Path(__file__).resolve().parent
 DIST = ROOT / 'dist'
 articles = [(ROOT / f'article-{i:02}.html').read_text() for i in (1, 2)]
+third_article = (ROOT / 'article-03.html').read_text()
 template = '''<!doctype html>
 <html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="Open-HumanScale双篇研究解读：从纯人类与人机混合Scaling，到零样本操作、视觉目标ICL与长程任务。"><title>Open-HumanScale · 两篇研究解读</title><link rel="stylesheet" href="styles.css"><link rel="stylesheet" href="benchmark-motion.css"><link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' rx='9' fill='%23246154'/%3E%3Ctext x='9' y='29' fill='white' font-size='27' font-family='serif'%3EH%3C/text%3E%3C/svg%3E"><script src="app.js" defer></script><script src="benchmark-data-v20.js" defer></script><script src="benchmark-motion.js" defer></script></head>
 <body><div class="reading-progress" aria-hidden="true"></div>
@@ -19,7 +20,24 @@ template = '''<!doctype html>
 </body></html>'''
 site_url = 'https://jiankai-ss.github.io/open-humanscale'
 share_metadata = f'''<link rel="canonical" href="{site_url}/"><meta property="og:type" content="website"><meta property="og:url" content="{site_url}/"><meta property="og:title" content="Open-HumanScale · 两篇研究解读"><meta property="og:description" content="从人类与机器人混合数据Scaling，到零样本操作、视觉目标ICL与长程任务。"><meta property="og:image" content="{site_url}/assets/zero-shot-tasks-zoom.jpg">'''
-(DIST / 'index.html').write_text(template.replace('</head>', share_metadata + '</head>').replace('ARTICLE_ONE', articles[0]).replace('ARTICLE_TWO', articles[1]))
+index = template.replace('</head>', share_metadata + '</head>').replace('ARTICLE_ONE', articles[0]).replace('ARTICLE_TWO', articles[1])
+index = index.replace('<span class="edition-note">', '<a class="standalone-link" href="article-03.html">03 · 人机经验如何共享 ↗</a><span class="edition-note">')
+(DIST / 'index.html').write_text(index)
+
+# Keep the third story on its own page while sharing the reading controls.
+third = template
+third = re.sub(r'<meta name="description"[^>]+>', '<meta name="description" content="人类和机器人一起训练，究竟共享了什么？从未经直接配对的目标迁移，追问经验如何参与行动，以及训练如何改变迁移能力。">', third)
+third = third.replace('<title>Open-HumanScale · 两篇研究解读</title>', '<title>人类和机器人一起训练，究竟共享了什么？ · HumanWAM</title>')
+third = third.replace('<link rel="stylesheet" href="benchmark-motion.css">', '')
+third = third.replace('<script src="benchmark-data-v20.js" defer></script><script src="benchmark-motion.js" defer></script>', '')
+third = third.replace('href="#article-1"', 'href="index.html#article-1"')
+third = re.sub(r'<div class="edition-bar">.*?</div>\n<noscript>', '''<div class="edition-bar"><nav class="edition-tabs story-nav" aria-label="文章导航"><a href="index.html#article-1"><small>01</small> Scaling与零样本</a><a href="index.html#article-2"><small>02</small> 视觉目标与长程</a><a href="#article-3" aria-current="page"><small>03</small> 人机经验如何共享</a></nav><span class="edition-note">第三篇 / 独立稿</span></div>
+<noscript>''', third)
+third = re.sub(r'<noscript>.*?</noscript>', '<noscript><p class="no-js-note">可直接阅读全文，或下载<a href="article-03.txt">第三篇文稿</a>。</p></noscript>', third)
+third = re.sub(r'<article id="article-1".*?</article>\s*<article id="article-2".*?</article>', '<article id="article-3" class="article" data-download="article-03.txt">'+third_article+'<a class="article-end" href="index.html#article-1"><span><small>继续阅读 / 01 &amp; 02</small>Scaling、零样本与视觉目标</span><span>→</span></a></article>', third, flags=re.S)
+third = third.replace('href="article-01.txt" download', 'href="article-03.txt" download')
+third_metadata = f'''<link rel="canonical" href="{site_url}/article-03.html"><meta property="og:type" content="article"><meta property="og:url" content="{site_url}/article-03.html"><meta property="og:title" content="人类和机器人一起训练，究竟共享了什么？"><meta property="og:description" content="从人类目标指导机器人这一现象出发，讨论任务关系的迁移、现场中的执行，以及训练配方对迁移能力的影响。"><meta property="og:image" content="{site_url}/assets/human-books-right-goal.webp">'''
+(DIST / 'article-03.html').write_text(third.replace('</head>', third_metadata + '</head>'))
 
 class ExtractText(HTMLParser):
     def __init__(self):
@@ -35,7 +53,7 @@ class ExtractText(HTMLParser):
         if tag in ['script','style','button','video','nav']: self.skip -= 1
     def handle_data(self, data):
         if not self.skip: self.parts.append(data)
-for i, article in enumerate(articles, 1):
+for i, article in enumerate([*articles, third_article], 1):
     parser=ExtractText();parser.feed(article)
     text = re.sub(r'\n\s*\n(?:\s*\n)+', '\n\n', ''.join(parser.parts)).strip()
     text += '\n\n论文：https://arxiv.org/pdf/2611.06817\n项目：https://dagroup-pku.github.io/open-humanscale/\n'

@@ -1,6 +1,9 @@
 Open-HumanScale 双篇公众号文稿 / v2 / 2026-11-05
 
 阅读：dist/index.html
+第三篇独立阅读：dist/article-03.html
+第三篇正文：article-03.html；导出：dist/article-03.txt。
+第三篇编辑依据与待补数据：article-03-editor-notes.txt。
 文稿：dist/article-01.txt 与 dist/article-02.txt
 编辑：article-01.html 与 article-02.html 是正文源文件。
 重建：在本目录执行 python build.py。

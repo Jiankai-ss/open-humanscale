@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="人类和机器人一起训练，究竟共享了什么？从未经直接配对的目标迁移，追问经验如何参与行动，以及训练如何改变迁移能力。"><title>人类和机器人一起训练，究竟共享了什么？ · HumanWAM</title><link rel="stylesheet" href="styles.css"><link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' rx='9' fill='%23246154'/%3E%3Ctext x='9' y='29' fill='white' font-size='27' font-family='serif'%3EH%3C/text%3E%3C/svg%3E"><script src="app.js" defer></script><link rel="canonical" href="https://jiankai-ss.github.io/open-humanscale/article-03.html"><meta property="og:type" content="article"><meta property="og:url" content="https://jiankai-ss.github.io/open-humanscale/article-03.html"><meta property="og:title" content="人类和机器人一起训练，究竟共享了什么？"><meta property="og:description" content="从人类目标指导机器人这一现象出发，讨论任务关系的迁移、现场中的执行，以及训练配方对迁移能力的影响。"><meta property="og:image" content="https://jiankai-ss.github.io/open-humanscale/assets/human-books-right-goal.webp"></head>
+<body><div class="reading-progress" aria-hidden="true"></div>
+<header class="masthead"><div class="masthead-inner"><a class="brand" href="index.html#article-1">Open-<span>Human</span>Scale</a><span class="mast-label">RESEARCH / STORIES</span><div class="top-actions"><button id="phone-toggle" aria-pressed="false">手机预览</button><button id="copy">复制正文</button></div></div></header>
+<div class="edition-bar"><nav class="edition-tabs story-nav" aria-label="文章导航"><a href="index.html#article-1"><small>01</small> Scaling与零样本</a><a href="index.html#article-2"><small>02</small> 视觉目标与长程</a><a href="#article-3" aria-current="page"><small>03</small> 人机经验如何共享</a></nav><span class="edition-note">第三篇 / 独立稿</span></div>
+<noscript><p class="no-js-note">可直接阅读全文，或下载<a href="article-03.txt">第三篇文稿</a>。</p></noscript>
+<div class="page-layout"><aside class="sidebar"><p class="side-kicker">IN THIS STORY</p><nav class="toc" aria-label="文章目录"></nav><div class="side-foot"><span id="reading-meta"></span><br>图表可点击放大<a class="download" href="article-03.txt" download>下载文稿 ↓</a></div></aside><main>
+<article id="article-3" class="article" data-download="article-03.txt"><header class="article-header">
+  <p class="eyebrow">03 / HUMANWAM · SHARING EXPERIENCE</p>
+  <h1>人类和机器人一起训练，<br>究竟共享了什么？</h1>
+  <p class="deck">一张带有人手的目标图，为什么能让机器人完成操作？HumanWAM的几组实验，把这个问题从跨形态的目标迁移，一直推向动作的执行与训练的取舍：人类经验如何成为机器人可以调用的经验，又怎样在继续训练时被保留下来？</p>
+  <div class="byline"><span>Open-HumanScale · 实验观察</span><span>2026年11月5日 · 第三篇独立稿</span></div>
+  <nav class="story-jumps" aria-label="第三篇重点"><a href="#a3-human">没有直接教过的跨形态迁移 ↘</a><a href="#a3-route">迁移的经验如何参与行动 ↘</a><a href="#a3-recipe">继续训练，会保留什么 ↘</a></nav>
+</header>
+<div class="prose">
+<p class="lead">把一张人类第一视角的图片交给机器人：画面中有人的双手，棕色笔记本放在文件架右侧。机器人看过图片，完成整理，把笔记本放到了右边。换一张左侧目标图，它又改到了左边。</p>
+<p>这个现象最有意思的地方，藏在训练数据里。HumanWAM的预训练分别使用人类轨迹和机器人轨迹，<strong>其中并没有“人类目标图—机器人动作”这样的直接配对。</strong>后续复杂任务的训练也来自机器人。跨越人手与夹爪的这一步，是在测试时发生的。</p>
+<p>这让“用人类数据训练机器人”有了一个更具体的问题：<strong>两种执行者分别积累的经验，究竟通过什么联系起来，又能在多大程度上被重新使用？</strong>下面的实验，沿着这条线索展开。</p>
+
+<section id="a3-human"><h2><span>01</span>没有直接教过的配对，为什么能用？</h2>
+<p>先看这组对照。同一个经过机器人任务后训练的策略，接收两张不同的人类目标图。推理时参数不变，笔记本的目标位置随图片改变，机器人的执行结果也随之改变。</p>
+<div class="paired-demo" id="a3-human-books">
+  <figure><span class="demo-label">人类目标 A · 棕色笔记本在右侧</span><img class="goal-image" src="assets/human-books-right-goal.webp" alt="带有人手的目标图：棕色笔记本在右侧" loading="lazy"><video controls muted playsinline preload="none" poster="assets/human-books-right-poster.webp" src="assets/human-books-right.mp4" aria-label="机器人按照人类右侧目标图收纳笔记本"></video></figure>
+  <figure><span class="demo-label">人类目标 B · 棕色笔记本在左侧</span><img class="goal-image" src="assets/human-books-left-goal.webp" alt="带有人手的目标图：棕色笔记本在左侧" loading="lazy"><video controls muted playsinline preload="none" poster="assets/human-books-left-poster.webp" src="assets/human-books-left.mp4" aria-label="机器人按照人类左侧目标图收纳笔记本"></video></figure>
+  <div class="pair-actions"><button data-play-pair>一起播放对照</button><button data-pause-pair>暂停</button></div>
+  <p class="media-caption">同一个经过机器人任务后训练的策略，推理时参数不变；改变的是人类目标图中的空间关系。来源：项目页，论文Fig. 26对应实验。</p>
+</div>
+<p>预训练时，目标图取自各自轨迹的未来帧：人类轨迹提供人类的观测、目标和动作，机器人轨迹提供机器人的观测、目标和动作。在复杂桌面任务后训练之后，研究者才把带有人手的目标图交给机器人策略。</p>
+<div class="goal-transfer" aria-label="训练配对与测试时的跨形态目标迁移示意">
+  <div><small>预训练中的配对</small><p>人类目标图 <span>→</span> 人类动作</p><p>机器人目标图 <span>→</span> 机器人动作</p></div>
+  <div><small>机器人任务后训练之后</small><p><strong>人类目标图</strong> <span>→</span> <strong>机器人执行</strong></p><em>更换目标，策略参数保持不变</em></div>
+</div>
+<p>如果只看机器人任务的后训练数据，这类带有人手的目标图超出了它的输入分布；但放到整个混合预训练过程中看，人类画面又是模型熟悉的经验来源。实验中，两部分经验在同一个执行结果里接上了：<strong>目标来自人类画面，动作由机器人完成。</strong></p>
+<div id="a3-model">
+<p>这种连接发生在HumanWAM的统一建模框架里。作为Open-HumanScale的世界—动作模型，HumanWAM联合学习未来画面和动作；研究先在5万小时纯人类数据上探索Scaling，再把机器人与人类数据共同扩展到约6万小时，形成本文关注的HumanWAM-Goal。</p>
+<p>HumanWAM-Goal通过统一的动作接口和共享的视频—动作生成器学习两类数据，并显式引入视觉目标。执行时，目标图、当前观测、语言与机器人状态共同决定接下来的动作。<strong>Goal condition给出调用经验的目标，规模化的人机混合训练提供可供调用的经验。</strong>这一设计为跨形态迁移提供了条件。</p>
+<figure><button class="zoom" data-image="assets/humanwam-goal-architecture.png" aria-label="放大HumanWAM-Goal架构"><img src="assets/humanwam-goal-architecture.png" alt="HumanWAM-Goal通过共享的视频—动作生成器，结合目标图、当前观测、语言与机器人状态生成动作" loading="lazy"></button><figcaption>HumanWAM-Goal架构。视觉目标告诉模型希望得到怎样的状态，规模化的人机经验提供执行这些操作的基础。来源：论文Fig. 16。</figcaption></figure>
+</div>
+<p>杯子的对照展示了相同的现象：机器人先盖好杯盖，再依据人类目标图，把杯子送到显示器附近或文件架旁。</p>
+<div class="paired-demo" id="a3-human-mug">
+  <figure><span class="demo-label">人类目标 A · 杯子靠近显示器</span><img class="goal-image" src="assets/human-mug-monitor-goal.webp" alt="人类目标图中的带盖杯子在显示器附近" loading="lazy"><video controls muted playsinline preload="none" poster="assets/human-mug-monitor-poster.webp" src="assets/human-mug-monitor.mp4" aria-label="盖好杯子并放到显示器附近"></video></figure>
+  <figure><span class="demo-label">人类目标 B · 杯子靠近文件架</span><img class="goal-image" src="assets/human-mug-rack-goal.webp" alt="人类目标图中的带盖杯子在文件架旁" loading="lazy"><video controls muted playsinline preload="none" poster="assets/human-mug-rack-poster.webp" src="assets/human-mug-rack.mp4" aria-label="盖好杯子并放到文件架旁"></video></figure>
+  <div class="pair-actions"><button data-play-pair>一起播放对照</button><button data-pause-pair>暂停</button></div>
+  <p class="media-caption">人类目标图还可以改变杯子的放置位置。两段为项目页对应片段，均使用任务后训练后的固定策略。</p>
+</div>
+<p>这就是Visual Goal ICL在这里的含义：模型参数保持不变，新的视觉上下文改变了执行结果。这些人类目标图实验使用的是任务后训练后的策略；下文的递饮料与物体换位，则是直接使用预训练模型的zero-shot演示。</p>
+<p>人手与夹爪的外观不同，具体动作也不同，但“哪个物体应当位于哪里”可以成为共同的任务要求。实验支持这样一种解释：<strong>混合训练让模型能够跨越执行者的差异，利用目标中的任务关系。</strong>至于内部是否形成了统一表征，还需要专门的分析；这里首先看到的是行为上的迁移。</p>
+<p>接下来的问题是：这种迁移能否应对现场变化？当当前场景与目标图对不上时，机器人会怎样使用这个目标？</p>
+</section>
+
+<section id="a3-route"><h2><span>02</span>同一个任务要求，能否换一种方式实现？</h2>
+<p>把饮料递给人的zero-shot演示，恰好提供了这样的变化。目标图中，接物的手在机器人前方；实际执行时，人手却从右侧伸来。机器人拿起饮料，转向现场伸出的手，完成了交接。</p>
+<div class="goal-execution" id="a3-handover">
+  <figure><span class="demo-label">目标图 · 接物的手在前方</span><button class="zoom" data-image="assets/zero-human-handover-goal.jpg" aria-label="放大递饮料任务的目标图"><img src="assets/zero-human-handover-goal.jpg" alt="目标图中，一只人手从机器人前方伸出，接住机器人递来的饮料"></button></figure>
+  <figure><span class="demo-label">实际执行 · 接物的手在右侧</span><video controls muted playsinline loop preload="none" poster="assets/zero-human-handover.jpg" src="assets/zero-human-handover.mp4" aria-label="接物人手在右侧，机器人仍完成饮料交接的零样本演示"></video></figure>
+  <p class="media-caption">同一任务的输入目标图与执行录像。接物者的位置发生变化，机器人把饮料交到现场伸出的手中。来源：项目页zero-shot演示；保留原素材播放速度。</p>
+</div>
+<p>这里保留下来的是“把饮料交给人”的任务关系，具体交接点则由当前观测确定。与前面的笔记本对照放在一起，这个细节就更清楚了：笔记本放左还是放右，本身就是需要遵循的目标；递饮料时，接物者在示例图里的坐标却可以随现场改变。<strong>模型需要利用目标里的任务信息，也需要利用现场里的执行条件。</strong></p>
+<p>研究团队还在zero-shot测试中观察到，一些此前未见过的操作物体也能被处理。这提示，操作经验有可能迁移到外观不同、但交互方式相近的对象上。更广泛的人类数据可能提供了这样的经验；具体哪些对象未在何种训练数据中出现，仍需逐项核对，不能仅从成功录像反推数据来源。</p>
+<p>不过，能从目标中提取任务要求，还只是执行的一部分。机器人还要组织动作，把眼前状态变成目标状态。物体换位的演示，把这个问题推进到了动作路径上。</p>
+<p>研究者原本设想，机器人会直接把左右两个物体搬到对面。录像中却出现了另一条路径：左手先拿起物体，放到前方的平台上，再由右手接取、继续搬运。目标没有要求使用这个平台，它却成为两只手之间的中转站。</p>
+<figure class="video-figure observation-hero"><video controls muted playsinline loop preload="none" poster="assets/zero-object-handover.jpg" src="assets/zero-object-handover.mp4" aria-label="零样本物体换位任务中的暂存与换手过程"></video><figcaption>目标指定物体换位，执行中出现了暂存与换手。重点看物体在前方平台上的短暂停留。来自项目页“排序换手”原片，保留原素材播放速度。</figcaption></figure>
+<div class="observation-frames">
+  <figure><img src="assets/a3-handover-left.jpg" alt="左手拿起黄色物体" loading="lazy"><figcaption><b>01</b> 左手取物</figcaption></figure>
+  <figure><img src="assets/a3-handover-buffer.jpg" alt="黄色物体暂放在前方收纳盒顶部" loading="lazy"><figcaption><b>02</b> 前方平台暂存</figcaption></figure>
+  <figure><img src="assets/a3-handover-right.jpg" alt="右手从前方平台接取黄色物体" loading="lazy"><figcaption><b>03</b> 右手接取</figcaption></figure>
+</div>
+<p>抓取、暂存、换手、再搬运，被接续到同一个目标之下。从行为上看，这是模型组合操作的一个例子；它是否对应显式规划、这条路径是否从未出现在训练中，录像本身不能给出答案。值得关注的是，<strong>目标留下的执行空间，被一条研究者未预先设想的动作路径利用了起来。</strong></p>
+<p>到这里，人类目标图与两段zero-shot演示形成了一条连续的线索：任务关系可以跨越人手与夹爪，执行位置可以适应当前场景，动作路径也可以通过组合来实现。这些观察支持的共同方向，是<strong>把经验用于新的条件下</strong>。</p>
+<p>要做到这一点，模型既需要接触多样的任务与交互，也需要掌握机器人能够可靠执行的动作。如果把训练进一步向机器人数据倾斜，这两方面能力会一起变好吗？</p>
+</section>
+
+<section id="a3-recipe"><h2><span>03</span>更偏向机器人训练，迁移能力会更好吗？</h2>
+<p>这个问题让我们回到同一份约6万小时的数据。机器人数据约占四分之一，人类数据约占四分之三。团队比较了三条训练路线：按数据量随机采样；每个batch保持人机1∶1；以及先混合训练，再只用机器人数据继续训练。</p>
+<div class="recipe-paths">
+  <div><span class="recipe-number">A</span><h3>按数据量采样</h3><div class="mixture" role="img" aria-label="机器人约25%，人类约75%"><i style="width:25%">Robot</i><i style="width:75%">Human</i></div><p>数据池随机采样<br>robot∶human ≈ 1∶3</p></div>
+  <div><span class="recipe-number">B</span><h3>每个batch平衡采样</h3><div class="mixture" role="img" aria-label="机器人50%，人类50%"><i style="width:50%">Robot</i><i style="width:50%">Human</i></div><p>Balanced采样<br>robot∶human = 1∶1</p></div>
+  <div><span class="recipe-number">C</span><h3>混合之后，再训练机器人</h3><div class="recipe-stages"><span>混合预训练</span><b>→</b><span>Robot-only</span></div><p>先按数据量混合<br>第二阶段只用机器人数据</p></div>
+</div>
+<p class="media-caption">这里的random／uniform指训练采样方式；RoboTwin的Random指测试环境随机化。下文将前者称为“按数据量采样”。</p>
+<p>三种配方依次提高机器人数据的曝光程度，但结果并没有沿着一条指标共同上升。</p>
+<h3 class="observation-subhead">先提高机器人曝光：平均分与能力范围分开了</h3>
+<p>在提供的RoboTwin zero-shot检查点中，按数据量采样的平均成功率为<strong>13.94%</strong>，balanced为<strong>13.56%</strong>。然而，按论文“Clean与Random平均成功率至少2%”的覆盖标准，balanced覆盖了<strong>25项任务</strong>，高于前者的<strong>22项</strong>。</p>
+<figure><button class="zoom" data-image="assets/a3-success-coverage.svg" aria-label="放大平均成功率与任务覆盖对照"><img src="assets/a3-success-coverage.svg" alt="按数据量采样与balanced的平均成功率分别为13.94%和13.56%，任务覆盖分别为22项和25项" loading="lazy"></button><figcaption>同一评分协议下的检查点对比：按数据量采样40k步，balanced 168k步；覆盖门槛为每任务平均成功率至少2%。50项计分任务中，42项实际执行，另8项按协议计为失败。根据团队提供的逐任务报告快照计算。</figcaption></figure>
+<p>平均分略降，跨过覆盖门槛的任务反而更多。这也不是所有能力都在增强：balanced有6项任务新过线，同时有3项退线。变化发生在能力的分布上——有些任务改善，有些任务变弱，最终平均值掩盖了这层差异。</p>
+<p>真机评测出现了相呼应的结果：按数据量采样的版本总体表现更高，balanced的收益则集中在较难的操作上。Hard任务平均成功率从<strong>19%提高至27%</strong>，其中包括胶棒入笔筒、叠碗和双手举瓶等任务。</p>
+<div class="demo-grid observation-demos">
+  <figure class="demo-card"><video controls muted playsinline loop preload="none" poster="assets/zero-glue-placement.jpg" src="assets/zero-glue-placement.mp4" aria-label="胶棒放入笔筒的zero-shot任务演示"></video><figcaption><span class="demo-meta">胶棒入笔筒 · 任务演示</span><strong>10% → 40%</strong><span>按数据量采样 → Balanced</span></figcaption></figure>
+  <figure class="demo-card"><video controls muted playsinline loop preload="none" poster="assets/zero-bowl-stack.jpg" src="assets/zero-bowl-stack.mp4" aria-label="叠两个碗的zero-shot任务演示"></video><figcaption><span class="demo-meta">叠两个碗 · 任务演示</span><strong>0% → 60%</strong><span>按数据量采样 → Balanced</span></figcaption></figure>
+  <figure class="demo-card"><video controls muted playsinline loop preload="none" poster="assets/zero-two-drinks-1.jpg" src="assets/zero-two-drinks-1.mp4" aria-label="双手各举一个瓶子的zero-shot任务演示"></video><figcaption><span class="demo-meta">双手各举一瓶 · 任务演示</span><strong>30% → 60%</strong><span>按数据量采样 → Balanced</span></figcaption></figure>
+</div>
+<p class="media-caption">成功率来自论文第6节，每任务每模型10次试验。视频展示对应任务，并非两种配方的成对录像。Hard即团队早期记录中的Middle分组。</p>
+<p>这些结果给出一个有用的解释方向：更多机器人曝光，可能帮助模型把已有经验落实为较难的控制；同时，人类数据仍在提供多样的场景与交互。仿真的覆盖变化与真机Hard任务的改善，都与这一解释相容。由于所比较检查点的训练步数不同，这里讨论的是训练配方的实际表现。</p>
+<h3 class="observation-subhead" id="a3-zero-posttraining">再走到纯机器人训练：直接迁移与后续适配分开了</h3>
+<p>如果继续提高机器人曝光，让第二阶段完全使用机器人数据，会发生什么？团队提供的RoboTwin评测快照显示，两阶段模型的zero-shot平均成功率为<strong>11.81%</strong>，低于balanced的<strong>13.56%</strong>；按前述至少2%的覆盖标准，任务覆盖也由<strong>25项降至17项</strong>。团队在真机测试中同样观察到了zero-shot表现回落。</p>
+<p>但在RoboTwin目标任务后训练之后，两阶段模型又取得了更高的成绩。本次提供的qpos后训练记录中，balanced的最佳平均成功率为<strong>87.28%</strong>，两阶段为<strong>88.34%</strong>。</p>
+<figure><button class="zoom" data-image="assets/a3-zero-posttraining.svg" aria-label="放大zero-shot与qpos后训练对照"><img src="assets/a3-zero-posttraining.svg" alt="左图RoboTwin zero-shot：balanced 13.56%，两阶段当前快照11.81%；右图qpos后训练：balanced 87.28%，两阶段88.34%" loading="lazy"></button><figcaption>相同两种训练配方，在直接部署与目标任务后训练后出现不同表现。左图：两阶段zero-shot为当前评测快照，已计分4,989/5,000次、成功589次，尚有11次未完成；覆盖17项也是快照值。右图：qpos后训练取本次提供记录中的最佳均值，balanced与两阶段的后训练步数分别为16k与20k。两图纵轴刻度不同。“两阶段”指任务后训练之前的混合→机器人预训练流程。</figcaption></figure>
+<p>这个反转让前面的讨论更具体了：<strong>直接使用已有经验完成任务，与继续学习目标任务之后取得高分，对预训练模型提出了不同要求。</strong>纯机器人第二阶段可能使模型更适应机器人控制分布，便于后续任务训练；与此同时，一部分依赖人类经验、却缺少机器人样本持续支持的能力，可能变得不容易被直接调用。</p>
+<p>“遗忘”是对此的一种可能解释。目前结果直接说明的是：机器人数据曝光更多，并不保证zero-shot能力持续变好；在这些实验中，保留人类数据共同训练，对直接迁移仍然有价值。</p>
+<p>因此，6万小时描述了经验来源的规模，训练过程中这些经验怎样持续出现，也会影响最终可直接调用的能力。人类目标图和zero-shot演示让我们看到迁移的表现；配方对照进一步提示，<strong>维持广泛的迁移能力，与把模型进一步适配到机器人任务上，需要同时权衡。</strong></p>
+</section>
+
+<section id="a3-outlook"><h2><span>结语</span>共享经验，最终要体现为能够迁移的行动</h2>
+<p>人类和机器人一起训练，究竟共享了什么？这些实验给出的初步回答是：<strong>关于任务目标、物体关系与交互方式的经验，有机会跨越执行者与场景，被用于组织机器人的行动。</strong></p>
+<p>这种共享的价值，最终要落到新的执行条件中：模型能否从不同来源的目标里提取任务要求，再结合眼前的场景完成它。也正因为这些经验的来源不同，强化机器人控制时，如何继续保留广泛的人类交互经验，就成为训练本身需要回答的问题。</p>
+<p>对HumanWAM而言，Goal condition、共享的世界—动作建模与规模化人机数据，分别提供了目标入口、学习框架和经验来源。接下来的关键，是让多样的经验与可靠的执行共同增长。一个模型能否直接应对新的目标与条件，和它经过后训练能把特定任务做得多好，都需要被看见。</p>
+</section>
+<aside class="sources"><p class="source-label">研究与资源</p><p><a href="https://arxiv.org/pdf/2611.06817" target="_blank" rel="noopener">阅读论文 ↗</a><a href="https://dagroup-pku.github.io/open-humanscale/" target="_blank" rel="noopener">项目与演示 ↗</a><a href="article-03.txt" download>下载第三篇文稿 ↓</a></p><p>模型与Goal condition依据论文第4—6节；zero-shot覆盖由研究团队补充的两份逐任务报告核算；后训练对比采用团队本次补充的记录。行为解释属于基于这些观察提出的假设。</p></aside>
+</div>
+<a class="article-end" href="index.html#article-1"><span><small>继续阅读 / 01 &amp; 02</small>Scaling、零样本与视觉目标</span><span>→</span></a></article>
+</main></div><footer class="footer"><span>Open-HumanScale · 文稿与配图预览</span><span>HUMAN + ROBOT EXPERIENCE → CAPABILITY</span></footer>
+<dialog id="image-dialog" aria-labelledby="image-caption"><div class="dialog-top"><span id="image-caption"></span><button aria-label="关闭图片">×</button></div><img alt=""></dialog><div class="toast" role="status" aria-live="polite" hidden></div>
+</body></html>

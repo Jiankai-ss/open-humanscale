@@ -9,8 +9,9 @@ function showArticle(index,scroll=true){
   document.querySelectorAll('video').forEach(v=>v.pause());
   articles.forEach((a,i)=>a.hidden=i!==index);
   tabs.forEach((t,i)=>{t.setAttribute('aria-selected',String(i===index));t.tabIndex=i===index?0:-1;});
-  document.body.classList.toggle('second',index===1);
-  document.title=(index?'换张目标图，机器人换种收纳法':'人类与机器人经验共同扩展')+' · Open-HumanScale';
+  document.body.classList.toggle('second',articles[index].id==='article-2');
+  document.body.classList.toggle('third',articles[index].id==='article-3');
+  document.title=articles[index].querySelector('h1').textContent.replace(/\s+/g,' ').trim()+' · Open-HumanScale';
   const headings=[...articles[index].querySelectorAll('h2')];
   document.querySelector('.toc').replaceChildren(...headings.map(h=>{const a=document.createElement('a');a.href='#'+h.parentElement.id;a.textContent=h.textContent.replace(/^\d{2}/,'');return a;}));
   if(observer)observer.disconnect();
@@ -20,12 +21,12 @@ function showArticle(index,scroll=true){
   reading.querySelectorAll('details,.benchmark-motion,.pair-actions,video').forEach(e=>e.remove());
   const count=reading.textContent.replace(/\s/g,'').length;
   document.querySelector('#reading-meta').textContent=`约 ${Math.round(count/100)*100} 字 · ${Math.ceil(count/450)} 分钟阅读`;
-  document.querySelector('.download').href=index?'article-02.txt':'article-01.txt';
+  document.querySelector('.download').href=articles[index].dataset.download||`article-${String(index+1).padStart(2,'0')}.txt`;
   if(scroll)window.scrollTo({top:0,behavior:'instant'});
   progress();
 }
-function navigate(index){history.pushState(null,'','#article-'+(index+1));showArticle(index);}
-tabs.forEach((t,i)=>{t.addEventListener('click',()=>navigate(i));t.addEventListener('keydown',e=>{if(['ArrowLeft','ArrowRight','Home','End'].includes(e.key)){e.preventDefault();const next=e.key==='Home'?0:e.key==='End'?1:1-active;navigate(next);tabs[next].focus();}});});
+function navigate(index){history.pushState(null,'','#'+articles[index].id);showArticle(index);}
+tabs.forEach((t,i)=>{t.addEventListener('click',()=>navigate(i));t.addEventListener('keydown',e=>{if(['ArrowLeft','ArrowRight','Home','End'].includes(e.key)){e.preventDefault();const next=e.key==='Home'?0:e.key==='End'?articles.length-1:(active+(e.key==='ArrowRight'?1:-1)+articles.length)%articles.length;navigate(next);tabs[next].focus();}});});
 document.querySelectorAll('[data-next]').forEach(b=>b.addEventListener('click',()=>navigate(Number(b.dataset.next))));
 document.querySelector('#phone-toggle').addEventListener('click',e=>{const on=document.body.classList.toggle('phone-mode');e.currentTarget.setAttribute('aria-pressed',String(on));e.currentTarget.textContent=on?'桌面阅读':'手机预览';});
 document.querySelector('#copy').addEventListener('click',async()=>{
@@ -41,7 +42,8 @@ dialog.addEventListener('click',e=>{if(e.target===dialog)dialog.close();});
 dialog.addEventListener('close',()=>document.body.classList.remove('modal-open'));
 function progress(){const max=document.documentElement.scrollHeight-innerHeight;document.querySelector('.reading-progress').style.width=(max>0?Math.min(100,scrollY/max*100):0)+'%';}
 addEventListener('scroll',progress,{passive:true});addEventListener('resize',progress);
-addEventListener('hashchange',()=>{const hash=location.hash;if(hash.startsWith('#a2-')&&active!==1)showArticle(1,false);else if(hash.startsWith('#a1-')&&active!==0)showArticle(0,false);else if(hash==='#article-1')showArticle(0);else if(hash==='#article-2')showArticle(1);});
+function articleFromHash(){const target=document.getElementById(location.hash.slice(1));return target?articles.indexOf(target.closest('.article')):-1;}
+addEventListener('hashchange',()=>{const index=articleFromHash();if(index<0)return;if(index!==active)showArticle(index,false);if(location.hash==='#'+articles[index].id)showArticle(index);});
 document.querySelectorAll('.paired-demo').forEach(group=>{
   const play=group.querySelector('[data-play-pair],#play-pair');
   const pause=group.querySelector('[data-pause-pair],#pause-pair');
@@ -54,7 +56,7 @@ document.querySelectorAll('.paired-demo').forEach(group=>{
   pause?.addEventListener('click',()=>group.querySelectorAll('video').forEach(v=>v.pause()));
 });
 document.addEventListener('play',e=>{if(e.target.tagName==='VIDEO'){const pair=e.target.closest('.paired-demo');document.querySelectorAll('video').forEach(v=>{if(v!==e.target&&(!pair||!pair.contains(v)))v.pause();});}},true);
-showArticle(location.hash==='#article-2'||location.hash.startsWith('#a2-')?1:0,false);
+showArticle(Math.max(0,articleFromHash()),false);
 
 // Only the opening montage previews automatically; other demos remain user controlled.
 if(!matchMedia('(prefers-reduced-motion: reduce)').matches){

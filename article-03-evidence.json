@@ -1,0 +1,1481 @@
+{
+  "uniform": {
+    "source_file": "jk-1019-scal60k-robot14k-ego46k-selected-v3-40k-v1-skip8.md",
+    "populations": {
+      "clean": {
+        "adjust_bottle": {
+          "success": 0,
+          "scored": 50,
+          "evaluated": 50,
+          "assigned_failures": 0
+        },
+        "beat_block_hammer": {
+          "success": 1,
+          "scored": 50,
+          "evaluated": 50,
+          "assigned_failures": 0
+        },
+        "blocks_ranking_rgb": {
+          "success": 1,
+          "scored": 50,
+          "evaluated": 50,
+          "assigned_failures": 0
+        },
+        "blocks_ranking_size": {
+          "success": 0,
+          "scored": 50,
+          "evaluated": 50,
+          "assigned_failures": 0
+        },
+        "click_alarmclock": {
+          "success": 40,
+          "scored": 50,
+          "evaluated": 50,
+          "assigned_failures": 0
+        },
+        "click_bell": {
+          "success": 46,
+          "scored": 50,
+          "evaluated": 50,
+          "assigned_failures": 0
+        },
+        "dump_bin_bigbin": {
+          "success": 0,
+          "scored": 50,
+          "evaluated": 50,
+          "assigned_failures": 0
+        },
+        "grab_roller": {
+          "success": 10,
+          "scored": 50,
+          "evaluated": 50,
+          "assigned_failures": 0
+        },
+        "handover_block": {
+          "success": 0,
+          "scored": 50,
+          "evaluated": 0,
+          "assigned_failures": 50
+        },
+        "handover_mic": {
+          "success": 1,
+          "scored": 50,
+          "evaluated": 50,
+          "assigned_failures": 0
+        },
+        "hanging_mug": {
+          "success": 2,
+          "scored": 50,
+          "evaluated": 50,
+          "assigned_failures": 0
+        },
+        "lift_pot": {
+          "success": 0,
+          "scored": 50,
+          "evaluated": 50,
+          "assigned_failures": 0
+        },
+        "move_can_pot": {
+          "success": 0,
+          "scored": 50,
+          "evaluated": 50,
+          "assigned_failures": 0
+        },
+        "move_pillbottle_pad": {
+          "success": 0,
+          "scored": 50,
+          "evaluated": 50,
+          "assigned_failures": 0
+        },
+        "move_playingcard_away": {
+          "success": 19,
+          "scored": 50,
+          "evaluated": 50,
+          "assigned_failures": 0
+        },
+        "move_stapler_pad": {
+          "success": 0,
+          "scored": 50,
+          "evaluated": 50,
+          "assigned_failures": 0
+        },
+        "open_laptop": {
+          "success": 13,
+          "scored": 50,
+          "evaluated": 50,
+          "assigned_failures": 0
+        },
+        "open_microwave": {
+          "success": 47,
+          "scored": 50,
+          "evaluated": 50,
+          "assigned_failures": 0
+        },
+        "pick_diverse_bottles": {
+          "success": 0,
+          "scored": 50,
+          "evaluated": 50,
+          "assigned_failures": 0
+        },
+        "pick_dual_bottles": {
+          "success": 0,
+          "scored": 50,
+          "evaluated": 50,
+          "assigned_failures": 0
+        },
+        "place_a2b_left": {
+          "success": 12,
+          "scored": 50,
+          "evaluated": 50,
+          "assigned_failures": 0
+        },
+        "place_a2b_right": {
+          "success": 9,
+          "scored": 50,
+          "evaluated": 50,
+          "assigned_failures": 0
+        },
+        "place_bread_basket": {
+          "success": 1,
+          "scored": 50,
+          "evaluated": 50,
+          "assigned_failures": 0
+        },
+        "place_bread_skillet": {
+          "success": 1,
+          "scored": 50,
+          "evaluated": 50,
+          "assigned_failures": 0
+        },
+        "place_burger_fries": {
+          "success": 0,
+          "scored": 50,
+          "evaluated": 50,
+          "assigned_failures": 0
+        },
+        "place_can_basket": {
+          "success": 1,
+          "scored": 50,
+          "evaluated": 50,
+          "assigned_failures": 0
+        },
+        "place_cans_plasticbox": {
+          "success": 0,
+          "scored": 50,
+          "evaluated": 0,
+          "assigned_failures": 50
+        },
+        "place_container_plate": {
+          "success": 2,
+          "scored": 50,
+          "evaluated": 50,
+          "assigned_failures": 0
+        },
+        "place_dual_shoes": {
+          "success": 0,
+          "scored": 50,
+          "evaluated": 0,
+          "assigned_failures": 50
+        },
+        "place_empty_cup": {
+          "success": 1,
+          "scored": 50,
+          "evaluated": 50,
+          "assigned_failures": 0
+        },
+        "place_fan": {
+          "success": 0,
+          "scored": 50,
+          "evaluated": 50,
+          "assigned_failures": 0
+        },
+        "place_mouse_pad": {
+          "success": 1,
+          "scored": 50,
+          "evaluated": 50,
+          "assigned_failures": 0
+        },
+        "place_object_basket": {
+          "success": 0,
+          "scored": 50,
+          "evaluated": 0,
+          "assigned_failures": 50
+        },
+        "place_object_scale": {
+          "success": 0,
+          "scored": 50,
+          "evaluated": 50,
+          "assigned_failures": 0
+        },
+        "place_object_stand": {
+          "success": 1,
+          "scored": 50,
+          "evaluated": 50,
+          "assigned_failures": 0
+        },
+        "place_phone_stand": {
+          "success": 0,
+          "scored": 50,
+          "evaluated": 50,
+          "assigned_failures": 0
+        },
+        "place_shoe": {
+          "success": 1,
+          "scored": 50,
+          "evaluated": 50,
+          "assigned_failures": 0
+        },
+        "press_stapler": {
+          "success": 49,
+          "scored": 50,
+          "evaluated": 50,
+          "assigned_failures": 0
+        },
+        "put_bottles_dustbin": {
+          "success": 0,
+          "scored": 50,
+          "evaluated": 50,
+          "assigned_failures": 0
+        },
+        "put_object_cabinet": {
+          "success": 0,
+          "scored": 50,
+          "evaluated": 0,
+          "assigned_failures": 50
+        },
+        "rotate_qrcode": {
+          "success": 0,
+          "scored": 50,
+          "evaluated": 50,
+          "assigned_failures": 0
+        },
+        "scan_object": {
+          "success": 1,
+          "scored": 50,
+          "evaluated": 50,
+          "assigned_failures": 0
+        },
+        "shake_bottle": {
+          "success": 25,
+          "scored": 50,
+          "evaluated": 50,
+          "assigned_failures": 0
+        },
+        "shake_bottle_horizontally": {
+          "success": 27,
+          "scored": 50,
+          "evaluated": 50,
+          "assigned_failures": 0
+        },
+        "stack_blocks_three": {
+          "success": 0,
+          "scored": 50,
+          "evaluated": 0,
+          "assigned_failures": 50
+        },
+        "stack_blocks_two": {
+          "success": 0,
+          "scored": 50,
+          "evaluated": 0,
+          "assigned_failures": 50
+        },
+        "stack_bowls_three": {
+          "success": 0,
+          "scored": 50,
+          "evaluated": 0,
+          "assigned_failures": 50
+        },
+        "stack_bowls_two": {
+          "success": 2,
+          "scored": 50,
+          "evaluated": 50,
+          "assigned_failures": 0
+        },
+        "stamp_seal": {
+          "success": 0,
+          "scored": 50,
+          "evaluated": 50,
+          "assigned_failures": 0
+        },
+        "turn_switch": {
+          "success": 28,
+          "scored": 50,
+          "evaluated": 50,
+          "assigned_failures": 0
+        }
+      },
+      "random": {
+        "adjust_bottle": {
+          "success": 1,
+          "scored": 50,
+          "evaluated": 50,
+          "assigned_failures": 0
+        },
+        "beat_block_hammer": {
+          "success": 1,
+          "scored": 50,
+          "evaluated": 50,
+          "assigned_failures": 0
+        },
+        "blocks_ranking_rgb": {
+          "success": 0,
+          "scored": 50,
+          "evaluated": 50,
+          "assigned_failures": 0
+        },
+        "blocks_ranking_size": {
+          "success": 2,
+          "scored": 50,
+          "evaluated": 50,
+          "assigned_failures": 0
+        },
+        "click_alarmclock": {
+          "success": 38,
+          "scored": 50,
+          "evaluated": 50,
+          "assigned_failures": 0
+        },
+        "click_bell": {
+          "success": 40,
+          "scored": 50,
+          "evaluated": 50,
+          "assigned_failures": 0
+        },
+        "dump_bin_bigbin": {
+          "success": 0,
+          "scored": 50,
+          "evaluated": 50,
+          "assigned_failures": 0
+        },
+        "grab_roller": {
+          "success": 9,
+          "scored": 50,
+          "evaluated": 50,
+          "assigned_failures": 0
+        },
+        "handover_block": {
+          "success": 0,
+          "scored": 50,
+          "evaluated": 0,
+          "assigned_failures": 50
+        },
+        "handover_mic": {
+          "success": 2,
+          "scored": 50,
+          "evaluated": 50,
+          "assigned_failures": 0
+        },
+        "hanging_mug": {
+          "success": 1,
+          "scored": 50,
+          "evaluated": 50,
+          "assigned_failures": 0
+        },
+        "lift_pot": {
+          "success": 0,
+          "scored": 50,
+          "evaluated": 50,
+          "assigned_failures": 0
+        },
+        "move_can_pot": {
+          "success": 1,
+          "scored": 50,
+          "evaluated": 50,
+          "assigned_failures": 0
+        },
+        "move_pillbottle_pad": {
+          "success": 0,
+          "scored": 50,
+          "evaluated": 50,
+          "assigned_failures": 0
+        },
+        "move_playingcard_away": {
+          "success": 11,
+          "scored": 50,
+          "evaluated": 50,
+          "assigned_failures": 0
+        },
+        "move_stapler_pad": {
+          "success": 0,
+          "scored": 50,
+          "evaluated": 50,
+          "assigned_failures": 0
+        },
+        "open_laptop": {
+          "success": 18,
+          "scored": 50,
+          "evaluated": 50,
+          "assigned_failures": 0
+        },
+        "open_microwave": {
+          "success": 50,
+          "scored": 50,
+          "evaluated": 50,
+          "assigned_failures": 0
+        },
+        "pick_diverse_bottles": {
+          "success": 0,
+          "scored": 50,
+          "evaluated": 50,
+          "assigned_failures": 0
+        },
+        "pick_dual_bottles": {
+          "success": 0,
+          "scored": 50,
+          "evaluated": 50,
+          "assigned_failures": 0
+        },
+        "place_a2b_left": {
+          "success": 12,
+          "scored": 50,
+          "evaluated": 50,
+          "assigned_failures": 0
+        },
+        "place_a2b_right": {
+          "success": 7,
+          "scored": 50,
+          "evaluated": 50,
+          "assigned_failures": 0
+        },
+        "place_bread_basket": {
+          "success": 2,
+          "scored": 50,
+          "evaluated": 50,
+          "assigned_failures": 0
+        },
+        "place_bread_skillet": {
+          "success": 1,
+          "scored": 50,
+          "evaluated": 50,
+          "assigned_failures": 0
+        },
+        "place_burger_fries": {
+          "success": 0,
+          "scored": 50,
+          "evaluated": 50,
+          "assigned_failures": 0
+        },
+        "place_can_basket": {
+          "success": 1,
+          "scored": 50,
+          "evaluated": 50,
+          "assigned_failures": 0
+        },
+        "place_cans_plasticbox": {
+          "success": 0,
+          "scored": 50,
+          "evaluated": 0,
+          "assigned_failures": 50
+        },
+        "place_container_plate": {
+          "success": 3,
+          "scored": 50,
+          "evaluated": 50,
+          "assigned_failures": 0
+        },
+        "place_dual_shoes": {
+          "success": 0,
+          "scored": 50,
+          "evaluated": 0,
+          "assigned_failures": 50
+        },
+        "place_empty_cup": {
+          "success": 0,
+          "scored": 50,
+          "evaluated": 50,
+          "assigned_failures": 0
+        },
+        "place_fan": {
+          "success": 0,
+          "scored": 50,
+          "evaluated": 50,
+          "assigned_failures": 0
+        },
+        "place_mouse_pad": {
+          "success": 0,
+          "scored": 50,
+          "evaluated": 50,
+          "assigned_failures": 0
+        },
+        "place_object_basket": {
+          "success": 0,
+          "scored": 50,
+          "evaluated": 0,
+          "assigned_failures": 50
+        },
+        "place_object_scale": {
+          "success": 0,
+          "scored": 50,
+          "evaluated": 50,
+          "assigned_failures": 0
+        },
+        "place_object_stand": {
+          "success": 0,
+          "scored": 50,
+          "evaluated": 50,
+          "assigned_failures": 0
+        },
+        "place_phone_stand": {
+          "success": 1,
+          "scored": 50,
+          "evaluated": 50,
+          "assigned_failures": 0
+        },
+        "place_shoe": {
+          "success": 0,
+          "scored": 50,
+          "evaluated": 50,
+          "assigned_failures": 0
+        },
+        "press_stapler": {
+          "success": 50,
+          "scored": 50,
+          "evaluated": 50,
+          "assigned_failures": 0
+        },
+        "put_bottles_dustbin": {
+          "success": 0,
+          "scored": 50,
+          "evaluated": 50,
+          "assigned_failures": 0
+        },
+        "put_object_cabinet": {
+          "success": 0,
+          "scored": 50,
+          "evaluated": 0,
+          "assigned_failures": 50
+        },
+        "rotate_qrcode": {
+          "success": 0,
+          "scored": 50,
+          "evaluated": 50,
+          "assigned_failures": 0
+        },
+        "scan_object": {
+          "success": 1,
+          "scored": 50,
+          "evaluated": 50,
+          "assigned_failures": 0
+        },
+        "shake_bottle": {
+          "success": 40,
+          "scored": 50,
+          "evaluated": 50,
+          "assigned_failures": 0
+        },
+        "shake_bottle_horizontally": {
+          "success": 38,
+          "scored": 50,
+          "evaluated": 50,
+          "assigned_failures": 0
+        },
+        "stack_blocks_three": {
+          "success": 0,
+          "scored": 50,
+          "evaluated": 0,
+          "assigned_failures": 50
+        },
+        "stack_blocks_two": {
+          "success": 0,
+          "scored": 50,
+          "evaluated": 0,
+          "assigned_failures": 50
+        },
+        "stack_bowls_three": {
+          "success": 0,
+          "scored": 50,
+          "evaluated": 0,
+          "assigned_failures": 50
+        },
+        "stack_bowls_two": {
+          "success": 0,
+          "scored": 50,
+          "evaluated": 50,
+          "assigned_failures": 0
+        },
+        "stamp_seal": {
+          "success": 1,
+          "scored": 50,
+          "evaluated": 50,
+          "assigned_failures": 0
+        },
+        "turn_switch": {
+          "success": 24,
+          "scored": 50,
+          "evaluated": 50,
+          "assigned_failures": 0
+        }
+      }
+    },
+    "task_mean_percent": {
+      "adjust_bottle": 1,
+      "beat_block_hammer": 2,
+      "blocks_ranking_rgb": 1,
+      "blocks_ranking_size": 2,
+      "click_alarmclock": 78,
+      "click_bell": 86,
+      "dump_bin_bigbin": 0,
+      "grab_roller": 19,
+      "handover_block": 0,
+      "handover_mic": 3,
+      "hanging_mug": 3,
+      "lift_pot": 0,
+      "move_can_pot": 1,
+      "move_pillbottle_pad": 0,
+      "move_playingcard_away": 30,
+      "move_stapler_pad": 0,
+      "open_laptop": 31,
+      "open_microwave": 97,
+      "pick_diverse_bottles": 0,
+      "pick_dual_bottles": 0,
+      "place_a2b_left": 24,
+      "place_a2b_right": 16,
+      "place_bread_basket": 3,
+      "place_bread_skillet": 2,
+      "place_burger_fries": 0,
+      "place_can_basket": 2,
+      "place_cans_plasticbox": 0,
+      "place_container_plate": 5,
+      "place_dual_shoes": 0,
+      "place_empty_cup": 1,
+      "place_fan": 0,
+      "place_mouse_pad": 1,
+      "place_object_basket": 0,
+      "place_object_scale": 0,
+      "place_object_stand": 1,
+      "place_phone_stand": 1,
+      "place_shoe": 1,
+      "press_stapler": 99,
+      "put_bottles_dustbin": 0,
+      "put_object_cabinet": 0,
+      "rotate_qrcode": 0,
+      "scan_object": 2,
+      "shake_bottle": 65,
+      "shake_bottle_horizontally": 65,
+      "stack_blocks_three": 0,
+      "stack_blocks_two": 0,
+      "stack_bowls_three": 0,
+      "stack_bowls_two": 2,
+      "stamp_seal": 1,
+      "turn_switch": 52
+    },
+    "coverage_threshold_percent": 2,
+    "covered_tasks": [
+      "beat_block_hammer",
+      "blocks_ranking_size",
+      "click_alarmclock",
+      "click_bell",
+      "grab_roller",
+      "handover_mic",
+      "hanging_mug",
+      "move_playingcard_away",
+      "open_laptop",
+      "open_microwave",
+      "place_a2b_left",
+      "place_a2b_right",
+      "place_bread_basket",
+      "place_bread_skillet",
+      "place_can_basket",
+      "place_container_plate",
+      "press_stapler",
+      "scan_object",
+      "shake_bottle",
+      "shake_bottle_horizontally",
+      "stack_bowls_two",
+      "turn_switch"
+    ],
+    "clean_success_percent": 13.68,
+    "random_success_percent": 14.2,
+    "average_success_percent": 13.94,
+    "checkpoint_steps": 40000,
+    "audit_status": "complete"
+  },
+  "balanced": {
+    "source_file": "jiankai-1021-goalwam-scaling60k-robot14k-ego46k-balance-168k-v1-skip8.md",
+    "populations": {
+      "clean": {
+        "adjust_bottle": {
+          "success": 2,
+          "scored": 50,
+          "evaluated": 50,
+          "assigned_failures": 0
+        },
+        "beat_block_hammer": {
+          "success": 3,
+          "scored": 50,
+          "evaluated": 50,
+          "assigned_failures": 0
+        },
+        "blocks_ranking_rgb": {
+          "success": 0,
+          "scored": 50,
+          "evaluated": 50,
+          "assigned_failures": 0
+        },
+        "blocks_ranking_size": {
+          "success": 0,
+          "scored": 50,
+          "evaluated": 50,
+          "assigned_failures": 0
+        },
+        "click_alarmclock": {
+          "success": 39,
+          "scored": 50,
+          "evaluated": 50,
+          "assigned_failures": 0
+        },
+        "click_bell": {
+          "success": 40,
+          "scored": 50,
+          "evaluated": 50,
+          "assigned_failures": 0
+        },
+        "dump_bin_bigbin": {
+          "success": 0,
+          "scored": 50,
+          "evaluated": 50,
+          "assigned_failures": 0
+        },
+        "grab_roller": {
+          "success": 0,
+          "scored": 50,
+          "evaluated": 50,
+          "assigned_failures": 0
+        },
+        "handover_block": {
+          "success": 0,
+          "scored": 50,
+          "evaluated": 0,
+          "assigned_failures": 50
+        },
+        "handover_mic": {
+          "success": 0,
+          "scored": 50,
+          "evaluated": 50,
+          "assigned_failures": 0
+        },
+        "hanging_mug": {
+          "success": 1,
+          "scored": 50,
+          "evaluated": 50,
+          "assigned_failures": 0
+        },
+        "lift_pot": {
+          "success": 0,
+          "scored": 50,
+          "evaluated": 50,
+          "assigned_failures": 0
+        },
+        "move_can_pot": {
+          "success": 1,
+          "scored": 50,
+          "evaluated": 50,
+          "assigned_failures": 0
+        },
+        "move_pillbottle_pad": {
+          "success": 0,
+          "scored": 50,
+          "evaluated": 50,
+          "assigned_failures": 0
+        },
+        "move_playingcard_away": {
+          "success": 16,
+          "scored": 50,
+          "evaluated": 50,
+          "assigned_failures": 0
+        },
+        "move_stapler_pad": {
+          "success": 0,
+          "scored": 50,
+          "evaluated": 50,
+          "assigned_failures": 0
+        },
+        "open_laptop": {
+          "success": 26,
+          "scored": 50,
+          "evaluated": 50,
+          "assigned_failures": 0
+        },
+        "open_microwave": {
+          "success": 50,
+          "scored": 50,
+          "evaluated": 50,
+          "assigned_failures": 0
+        },
+        "pick_diverse_bottles": {
+          "success": 0,
+          "scored": 50,
+          "evaluated": 50,
+          "assigned_failures": 0
+        },
+        "pick_dual_bottles": {
+          "success": 0,
+          "scored": 50,
+          "evaluated": 50,
+          "assigned_failures": 0
+        },
+        "place_a2b_left": {
+          "success": 7,
+          "scored": 50,
+          "evaluated": 50,
+          "assigned_failures": 0
+        },
+        "place_a2b_right": {
+          "success": 7,
+          "scored": 50,
+          "evaluated": 50,
+          "assigned_failures": 0
+        },
+        "place_bread_basket": {
+          "success": 0,
+          "scored": 50,
+          "evaluated": 50,
+          "assigned_failures": 0
+        },
+        "place_bread_skillet": {
+          "success": 1,
+          "scored": 50,
+          "evaluated": 50,
+          "assigned_failures": 0
+        },
+        "place_burger_fries": {
+          "success": 0,
+          "scored": 50,
+          "evaluated": 50,
+          "assigned_failures": 0
+        },
+        "place_can_basket": {
+          "success": 2,
+          "scored": 50,
+          "evaluated": 50,
+          "assigned_failures": 0
+        },
+        "place_cans_plasticbox": {
+          "success": 0,
+          "scored": 50,
+          "evaluated": 0,
+          "assigned_failures": 50
+        },
+        "place_container_plate": {
+          "success": 2,
+          "scored": 50,
+          "evaluated": 50,
+          "assigned_failures": 0
+        },
+        "place_dual_shoes": {
+          "success": 0,
+          "scored": 50,
+          "evaluated": 0,
+          "assigned_failures": 50
+        },
+        "place_empty_cup": {
+          "success": 0,
+          "scored": 50,
+          "evaluated": 50,
+          "assigned_failures": 0
+        },
+        "place_fan": {
+          "success": 0,
+          "scored": 50,
+          "evaluated": 50,
+          "assigned_failures": 0
+        },
+        "place_mouse_pad": {
+          "success": 2,
+          "scored": 50,
+          "evaluated": 50,
+          "assigned_failures": 0
+        },
+        "place_object_basket": {
+          "success": 0,
+          "scored": 50,
+          "evaluated": 0,
+          "assigned_failures": 50
+        },
+        "place_object_scale": {
+          "success": 0,
+          "scored": 50,
+          "evaluated": 50,
+          "assigned_failures": 0
+        },
+        "place_object_stand": {
+          "success": 4,
+          "scored": 50,
+          "evaluated": 50,
+          "assigned_failures": 0
+        },
+        "place_phone_stand": {
+          "success": 1,
+          "scored": 50,
+          "evaluated": 50,
+          "assigned_failures": 0
+        },
+        "place_shoe": {
+          "success": 0,
+          "scored": 50,
+          "evaluated": 50,
+          "assigned_failures": 0
+        },
+        "press_stapler": {
+          "success": 50,
+          "scored": 50,
+          "evaluated": 50,
+          "assigned_failures": 0
+        },
+        "put_bottles_dustbin": {
+          "success": 0,
+          "scored": 50,
+          "evaluated": 50,
+          "assigned_failures": 0
+        },
+        "put_object_cabinet": {
+          "success": 0,
+          "scored": 50,
+          "evaluated": 0,
+          "assigned_failures": 50
+        },
+        "rotate_qrcode": {
+          "success": 2,
+          "scored": 50,
+          "evaluated": 50,
+          "assigned_failures": 0
+        },
+        "scan_object": {
+          "success": 1,
+          "scored": 50,
+          "evaluated": 50,
+          "assigned_failures": 0
+        },
+        "shake_bottle": {
+          "success": 25,
+          "scored": 50,
+          "evaluated": 50,
+          "assigned_failures": 0
+        },
+        "shake_bottle_horizontally": {
+          "success": 28,
+          "scored": 50,
+          "evaluated": 50,
+          "assigned_failures": 0
+        },
+        "stack_blocks_three": {
+          "success": 0,
+          "scored": 50,
+          "evaluated": 0,
+          "assigned_failures": 50
+        },
+        "stack_blocks_two": {
+          "success": 0,
+          "scored": 50,
+          "evaluated": 0,
+          "assigned_failures": 50
+        },
+        "stack_bowls_three": {
+          "success": 0,
+          "scored": 50,
+          "evaluated": 0,
+          "assigned_failures": 50
+        },
+        "stack_bowls_two": {
+          "success": 2,
+          "scored": 50,
+          "evaluated": 50,
+          "assigned_failures": 0
+        },
+        "stamp_seal": {
+          "success": 2,
+          "scored": 50,
+          "evaluated": 50,
+          "assigned_failures": 0
+        },
+        "turn_switch": {
+          "success": 28,
+          "scored": 50,
+          "evaluated": 50,
+          "assigned_failures": 0
+        }
+      },
+      "random": {
+        "adjust_bottle": {
+          "success": 3,
+          "scored": 50,
+          "evaluated": 50,
+          "assigned_failures": 0
+        },
+        "beat_block_hammer": {
+          "success": 1,
+          "scored": 50,
+          "evaluated": 50,
+          "assigned_failures": 0
+        },
+        "blocks_ranking_rgb": {
+          "success": 0,
+          "scored": 50,
+          "evaluated": 50,
+          "assigned_failures": 0
+        },
+        "blocks_ranking_size": {
+          "success": 2,
+          "scored": 50,
+          "evaluated": 50,
+          "assigned_failures": 0
+        },
+        "click_alarmclock": {
+          "success": 36,
+          "scored": 50,
+          "evaluated": 50,
+          "assigned_failures": 0
+        },
+        "click_bell": {
+          "success": 29,
+          "scored": 50,
+          "evaluated": 50,
+          "assigned_failures": 0
+        },
+        "dump_bin_bigbin": {
+          "success": 0,
+          "scored": 50,
+          "evaluated": 50,
+          "assigned_failures": 0
+        },
+        "grab_roller": {
+          "success": 1,
+          "scored": 50,
+          "evaluated": 50,
+          "assigned_failures": 0
+        },
+        "handover_block": {
+          "success": 0,
+          "scored": 50,
+          "evaluated": 0,
+          "assigned_failures": 50
+        },
+        "handover_mic": {
+          "success": 0,
+          "scored": 50,
+          "evaluated": 50,
+          "assigned_failures": 0
+        },
+        "hanging_mug": {
+          "success": 0,
+          "scored": 50,
+          "evaluated": 50,
+          "assigned_failures": 0
+        },
+        "lift_pot": {
+          "success": 0,
+          "scored": 50,
+          "evaluated": 50,
+          "assigned_failures": 0
+        },
+        "move_can_pot": {
+          "success": 1,
+          "scored": 50,
+          "evaluated": 50,
+          "assigned_failures": 0
+        },
+        "move_pillbottle_pad": {
+          "success": 0,
+          "scored": 50,
+          "evaluated": 50,
+          "assigned_failures": 0
+        },
+        "move_playingcard_away": {
+          "success": 15,
+          "scored": 50,
+          "evaluated": 50,
+          "assigned_failures": 0
+        },
+        "move_stapler_pad": {
+          "success": 0,
+          "scored": 50,
+          "evaluated": 50,
+          "assigned_failures": 0
+        },
+        "open_laptop": {
+          "success": 21,
+          "scored": 50,
+          "evaluated": 50,
+          "assigned_failures": 0
+        },
+        "open_microwave": {
+          "success": 50,
+          "scored": 50,
+          "evaluated": 50,
+          "assigned_failures": 0
+        },
+        "pick_diverse_bottles": {
+          "success": 0,
+          "scored": 50,
+          "evaluated": 50,
+          "assigned_failures": 0
+        },
+        "pick_dual_bottles": {
+          "success": 0,
+          "scored": 50,
+          "evaluated": 50,
+          "assigned_failures": 0
+        },
+        "place_a2b_left": {
+          "success": 10,
+          "scored": 50,
+          "evaluated": 50,
+          "assigned_failures": 0
+        },
+        "place_a2b_right": {
+          "success": 10,
+          "scored": 50,
+          "evaluated": 50,
+          "assigned_failures": 0
+        },
+        "place_bread_basket": {
+          "success": 2,
+          "scored": 50,
+          "evaluated": 50,
+          "assigned_failures": 0
+        },
+        "place_bread_skillet": {
+          "success": 1,
+          "scored": 50,
+          "evaluated": 50,
+          "assigned_failures": 0
+        },
+        "place_burger_fries": {
+          "success": 0,
+          "scored": 50,
+          "evaluated": 50,
+          "assigned_failures": 0
+        },
+        "place_can_basket": {
+          "success": 1,
+          "scored": 50,
+          "evaluated": 50,
+          "assigned_failures": 0
+        },
+        "place_cans_plasticbox": {
+          "success": 0,
+          "scored": 50,
+          "evaluated": 0,
+          "assigned_failures": 50
+        },
+        "place_container_plate": {
+          "success": 2,
+          "scored": 50,
+          "evaluated": 50,
+          "assigned_failures": 0
+        },
+        "place_dual_shoes": {
+          "success": 0,
+          "scored": 50,
+          "evaluated": 0,
+          "assigned_failures": 50
+        },
+        "place_empty_cup": {
+          "success": 0,
+          "scored": 50,
+          "evaluated": 50,
+          "assigned_failures": 0
+        },
+        "place_fan": {
+          "success": 0,
+          "scored": 50,
+          "evaluated": 50,
+          "assigned_failures": 0
+        },
+        "place_mouse_pad": {
+          "success": 0,
+          "scored": 50,
+          "evaluated": 50,
+          "assigned_failures": 0
+        },
+        "place_object_basket": {
+          "success": 0,
+          "scored": 50,
+          "evaluated": 0,
+          "assigned_failures": 50
+        },
+        "place_object_scale": {
+          "success": 0,
+          "scored": 50,
+          "evaluated": 50,
+          "assigned_failures": 0
+        },
+        "place_object_stand": {
+          "success": 1,
+          "scored": 50,
+          "evaluated": 50,
+          "assigned_failures": 0
+        },
+        "place_phone_stand": {
+          "success": 0,
+          "scored": 50,
+          "evaluated": 50,
+          "assigned_failures": 0
+        },
+        "place_shoe": {
+          "success": 0,
+          "scored": 50,
+          "evaluated": 50,
+          "assigned_failures": 0
+        },
+        "press_stapler": {
+          "success": 48,
+          "scored": 50,
+          "evaluated": 50,
+          "assigned_failures": 0
+        },
+        "put_bottles_dustbin": {
+          "success": 0,
+          "scored": 50,
+          "evaluated": 50,
+          "assigned_failures": 0
+        },
+        "put_object_cabinet": {
+          "success": 0,
+          "scored": 50,
+          "evaluated": 0,
+          "assigned_failures": 50
+        },
+        "rotate_qrcode": {
+          "success": 1,
+          "scored": 50,
+          "evaluated": 50,
+          "assigned_failures": 0
+        },
+        "scan_object": {
+          "success": 1,
+          "scored": 50,
+          "evaluated": 50,
+          "assigned_failures": 0
+        },
+        "shake_bottle": {
+          "success": 29,
+          "scored": 50,
+          "evaluated": 50,
+          "assigned_failures": 0
+        },
+        "shake_bottle_horizontally": {
+          "success": 37,
+          "scored": 50,
+          "evaluated": 50,
+          "assigned_failures": 0
+        },
+        "stack_blocks_three": {
+          "success": 0,
+          "scored": 50,
+          "evaluated": 0,
+          "assigned_failures": 50
+        },
+        "stack_blocks_two": {
+          "success": 0,
+          "scored": 50,
+          "evaluated": 0,
+          "assigned_failures": 50
+        },
+        "stack_bowls_three": {
+          "success": 0,
+          "scored": 50,
+          "evaluated": 0,
+          "assigned_failures": 50
+        },
+        "stack_bowls_two": {
+          "success": 1,
+          "scored": 50,
+          "evaluated": 50,
+          "assigned_failures": 0
+        },
+        "stamp_seal": {
+          "success": 2,
+          "scored": 50,
+          "evaluated": 50,
+          "assigned_failures": 0
+        },
+        "turn_switch": {
+          "success": 31,
+          "scored": 50,
+          "evaluated": 50,
+          "assigned_failures": 0
+        }
+      }
+    },
+    "task_mean_percent": {
+      "adjust_bottle": 5,
+      "beat_block_hammer": 4,
+      "blocks_ranking_rgb": 0,
+      "blocks_ranking_size": 2,
+      "click_alarmclock": 75,
+      "click_bell": 69,
+      "dump_bin_bigbin": 0,
+      "grab_roller": 1,
+      "handover_block": 0,
+      "handover_mic": 0,
+      "hanging_mug": 1,
+      "lift_pot": 0,
+      "move_can_pot": 2,
+      "move_pillbottle_pad": 0,
+      "move_playingcard_away": 31,
+      "move_stapler_pad": 0,
+      "open_laptop": 47,
+      "open_microwave": 100,
+      "pick_diverse_bottles": 0,
+      "pick_dual_bottles": 0,
+      "place_a2b_left": 17,
+      "place_a2b_right": 17,
+      "place_bread_basket": 2,
+      "place_bread_skillet": 2,
+      "place_burger_fries": 0,
+      "place_can_basket": 3,
+      "place_cans_plasticbox": 0,
+      "place_container_plate": 4,
+      "place_dual_shoes": 0,
+      "place_empty_cup": 0,
+      "place_fan": 0,
+      "place_mouse_pad": 2,
+      "place_object_basket": 0,
+      "place_object_scale": 0,
+      "place_object_stand": 5,
+      "place_phone_stand": 1,
+      "place_shoe": 0,
+      "press_stapler": 98,
+      "put_bottles_dustbin": 0,
+      "put_object_cabinet": 0,
+      "rotate_qrcode": 3,
+      "scan_object": 2,
+      "shake_bottle": 54,
+      "shake_bottle_horizontally": 65,
+      "stack_blocks_three": 0,
+      "stack_blocks_two": 0,
+      "stack_bowls_three": 0,
+      "stack_bowls_two": 3,
+      "stamp_seal": 4,
+      "turn_switch": 59
+    },
+    "coverage_threshold_percent": 2,
+    "covered_tasks": [
+      "adjust_bottle",
+      "beat_block_hammer",
+      "blocks_ranking_size",
+      "click_alarmclock",
+      "click_bell",
+      "move_can_pot",
+      "move_playingcard_away",
+      "open_laptop",
+      "open_microwave",
+      "place_a2b_left",
+      "place_a2b_right",
+      "place_bread_basket",
+      "place_bread_skillet",
+      "place_can_basket",
+      "place_container_plate",
+      "place_mouse_pad",
+      "place_object_stand",
+      "press_stapler",
+      "rotate_qrcode",
+      "scan_object",
+      "shake_bottle",
+      "shake_bottle_horizontally",
+      "stack_bowls_two",
+      "stamp_seal",
+      "turn_switch"
+    ],
+    "clean_success_percent": 13.68,
+    "random_success_percent": 13.44,
+    "average_success_percent": 13.56,
+    "checkpoint_steps": 168000,
+    "audit_status": "random and combined audit pending in supplied snapshot"
+  },
+  "posttraining": {
+    "eef": [
+      {
+        "recipe": "uniform",
+        "clean": 89.36,
+        "random": 70.0,
+        "average": 79.68,
+        "reported_average": 79.38,
+        "average_status": "Author confirmed using the arithmetic mean of Clean and Random on 2026-11-05; supersedes the pasted reported_average.",
+        "pretrain_checkpoint": "uniform120k",
+        "posttrain_steps": 20000
+      },
+      {
+        "recipe": "balanced",
+        "clean": 88.96,
+        "random": 74.36,
+        "average": 81.66,
+        "pretrain_checkpoint": "balance168k",
+        "posttrain_steps": 12000
+      },
+      {
+        "recipe": "two_stage",
+        "clean": 88.52,
+        "random": 74.24,
+        "average": 81.38,
+        "pretrain_checkpoint": "midtrain52k",
+        "posttrain_steps": 14000
+      }
+    ],
+    "qpos_v3": [
+      {
+        "recipe": "balanced",
+        "posttrain_steps": 16000,
+        "clean": 91.4,
+        "random": 83.16,
+        "average": 87.28
+      },
+      {
+        "recipe": "balanced",
+        "posttrain_steps": 22000,
+        "clean": 91.38,
+        "random": 82.94,
+        "average": 87.16
+      },
+      {
+        "recipe": "two_stage",
+        "posttrain_steps": 16000,
+        "clean": 91.54,
+        "random": 82.14,
+        "average": 86.84
+      },
+      {
+        "recipe": "two_stage",
+        "posttrain_steps": 20000,
+        "clean": 92.78,
+        "random": 83.9,
+        "average": 88.34
+      }
+    ]
+  },
+  "two_stage_zeroshot": {
+    "source_file": "codex-clipboard-75f1ef1d-7a11-445b-a0e8-47290fa3eeb8.jpg",
+    "source_type": "author_supplied_screenshot",
+    "run_name": "jk-1026-robot14k-midtrain-scal60k-168k-52k-v1-skip8",
+    "checkpoint_steps": 52000,
+    "training_recipe": "mixed pretraining followed by robot-only mid-training; identified by author",
+    "status": "running",
+    "audit_status": "pending",
+    "is_final": false,
+    "clean": {
+      "success": 293,
+      "scored_so_far": 2500,
+      "target_scored": 2500,
+      "reported_percent": 11.72
+    },
+    "random": {
+      "success": 296,
+      "scored_so_far": 2489,
+      "target_scored": 2500,
+      "reported_percent": 11.89
+    },
+    "combined": {
+      "success": 589,
+      "scored_so_far": 4989,
+      "target_scored": 5000,
+      "reported_percent": 11.81
+    },
+    "average_success_percent": 11.81,
+    "remaining_scored_rollouts": 11,
+    "task_coverage_count": 17,
+    "task_coverage_threshold": "Mean task success >= 2%; same summary column as uniform 22 and balanced 25",
+    "task_selection": "42 evaluated tasks plus 8 tasks assigned failures",
+    "notes": "Current scored denominator includes protocol-assigned failures; do not describe all 4989 as simulator-executed. Not a final 5000-rollout result. Real-robot two-stage numeric results have not been supplied."
+  }
+}
