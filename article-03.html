@@ -60,11 +60,23 @@
 </div>
 <p>抓取、暂存、换手、再搬运，被接续到同一个目标之下。从行为上看，这是模型组合操作的一个例子；它是否对应显式规划、这条路径是否从未出现在训练中，录像本身不能给出答案。值得关注的是，<strong>目标留下的执行空间，被一条研究者未预先设想的动作路径利用了起来。</strong></p>
 <p>到这里，人类目标图与两段zero-shot演示形成了一条连续的线索：任务关系可以跨越人手与夹爪，执行位置可以适应当前场景，动作路径也可以通过组合来实现。这些观察支持的共同方向，是<strong>把经验用于新的条件下</strong>。</p>
-<p>要做到这一点，模型既需要接触多样的任务与交互，也需要掌握机器人能够可靠执行的动作。如果把训练进一步向机器人数据倾斜，这两方面能力会一起变好吗？</p>
+<p>要做到这一点，模型既需要接触多样的任务与交互，也需要掌握机器人能够可靠执行的动作。回到训练，一个更基础的问题随之出现：人类与机器人数据各自扩大都能带来收益，把两类经验放到一起，能否继续突破单一来源的能力边界？</p>
 </section>
 
-<section id="a3-recipe"><h2><span>03</span>更偏向机器人训练，迁移能力会更好吗？</h2>
-<p>这个问题让我们回到同一份约6万小时的数据。机器人数据约占四分之一，人类数据约占四分之三。团队比较了三条训练路线：按数据量随机采样；每个batch保持人机1∶1；以及先混合训练，再只用机器人数据继续训练。</p>
+<section id="a3-recipe"><h2><span>03</span>从单一数据到Hybrid：Scaling继续，配方决定取舍</h2>
+<h3 class="observation-subhead" id="a3-hybrid-scaling">纯human、纯robot都有Scaling，混合之后仍在增长</h3>
+<p>先看纯人类数据。将预训练规模从100小时扩大到5万小时，再经过统一的机器人任务后训练，Random成功率从<strong>21.5%提高至42.9%</strong>。人类操作经验越丰富，模型适配到机器人之后，应对环境变化的能力也越强。</p>
+<p>纯机器人数据同样呈现Scaling。随着机器人预训练数据从2,005小时扩大到14,618小时，RoboTwin的zero-shot平均成功率从<strong>2.80%提高至11.48%</strong>，任务覆盖从8项增至18项。机器人经验扩大，也在拓宽可以直接执行的任务范围。</p>
+<p>接着进入hybrid模式：总计约3.05万小时的机器人＋人类混合数据，将zero-shot平均成功率进一步推到<strong>13.16%</strong>；扩展至约6.06万小时后，达到<strong>13.94%</strong>，任务覆盖也继续增至22项。<strong>两类数据混合之后，Scaling依然成立，而且超过了仅使用机器人数据时的表现。</strong></p>
+<div class="scaling-figures" id="a3-scaling-figures">
+  <figure><span class="scaling-figure-label">纯人类数据 · 后训练泛化</span><button class="zoom" data-image="assets/ego-scaling.png" aria-label="放大纯人类预训练Scaling结果"><img src="assets/ego-scaling.png" alt="纯人类预训练数据从100小时扩展到5万小时，机器人任务后训练后的Scene-OOD与Random成功率提高" loading="lazy"></button><figcaption>纯human Scaling：统一机器人任务后训练后的泛化表现。来源：论文Fig. 6，各条件选取最佳检查点。</figcaption></figure>
+  <figure><span class="scaling-figure-label">纯机器人 → 人机混合 · Zero-shot</span><button class="zoom" data-image="assets/hybrid-scaling.png" aria-label="放大机器人与混合数据Scaling结果"><img src="assets/hybrid-scaling.png" alt="先扩大纯机器人数据，再扩大人机混合数据，RoboTwin Clean与Random零样本成功率继续提高" loading="lazy"></button><figcaption>纯robot到hybrid Scaling：直接部署预训练模型的成功率。来源：论文Fig. 17(a)。两图分别展示各自协议内的增长趋势。</figcaption></figure>
+</div>
+<p>混合路线也把纯人类路线的能力继续向前推进。在完整模型的RoboTwin后训练结果中，纯人类预训练的HumanWAM-Vanilla取得<strong>68.88%</strong>的Clean2Random成功率；混合预训练的HumanWAM-Goal在本文采用的qpos后训练记录中达到<strong>83.90%</strong>。后者还具备前文展示的直接zero-shot执行能力。这是完整模型路线的比较，其中也包含架构与Goal condition设计的变化。</p>
+<p>合起来看，结论是：<strong>纯human有Scaling，纯robot有Scaling，hybrid仍有Scaling，并在本文测试的路线中取得了优于任一单一数据来源的综合表现。</strong>人类经验与机器人执行监督能够共同带来额外收益，这也为前面的跨形态迁移和动作复用提供了规模化训练的基础。</p>
+<h3 class="observation-subhead">混合有效之后，问题变成怎样混合</h3>
+<p>既然扩大两类经验能够带来收益，下一步就要看：在数据总量相同的情况下，每一步训练让模型接触多少人类数据、多少机器人数据，会怎样影响最终能力？</p>
+<p>团队因此回到同一份约6万小时的数据，比较三条训练路线。数据池中机器人约占四分之一、人类约占四分之三：可以直接按数据量随机采样，也可以在每个batch强制保持人机1∶1，还可以先混合训练，再只用机器人数据继续训练。</p>
 <div class="recipe-paths">
   <div><span class="recipe-number">A</span><h3>按数据量采样</h3><div class="mixture" role="img" aria-label="机器人约25%，人类约75%"><i style="width:25%">Robot</i><i style="width:75%">Human</i></div><p>数据池随机采样<br>robot∶human ≈ 1∶3</p></div>
   <div><span class="recipe-number">B</span><h3>每个batch平衡采样</h3><div class="mixture" role="img" aria-label="机器人50%，人类50%"><i style="width:50%">Robot</i><i style="width:50%">Human</i></div><p>Balanced采样<br>robot∶human = 1∶1</p></div>
@@ -90,7 +102,7 @@
 <figure><button class="zoom" data-image="assets/a3-zero-posttraining.svg" aria-label="放大zero-shot与qpos后训练对照"><img src="assets/a3-zero-posttraining.svg" alt="左图RoboTwin zero-shot：balanced 13.56%，两阶段当前快照11.81%；右图qpos后训练：balanced 87.28%，两阶段88.34%" loading="lazy"></button><figcaption>相同两种训练配方，在直接部署与目标任务后训练后出现不同表现。左图：两阶段zero-shot为当前评测快照，已计分4,989/5,000次、成功589次，尚有11次未完成；覆盖17项也是快照值。右图：qpos后训练取本次提供记录中的最佳均值，balanced与两阶段的后训练步数分别为16k与20k。两图纵轴刻度不同。“两阶段”指任务后训练之前的混合→机器人预训练流程。</figcaption></figure>
 <p>这个反转让前面的讨论更具体了：<strong>直接使用已有经验完成任务，与继续学习目标任务之后取得高分，对预训练模型提出了不同要求。</strong>纯机器人第二阶段可能使模型更适应机器人控制分布，便于后续任务训练；与此同时，一部分依赖人类经验、却缺少机器人样本持续支持的能力，可能变得不容易被直接调用。</p>
 <p>“遗忘”是对此的一种可能解释。目前结果直接说明的是：机器人数据曝光更多，并不保证zero-shot能力持续变好；在这些实验中，保留人类数据共同训练，对直接迁移仍然有价值。</p>
-<p>因此，6万小时描述了经验来源的规模，训练过程中这些经验怎样持续出现，也会影响最终可直接调用的能力。人类目标图和zero-shot演示让我们看到迁移的表现；配方对照进一步提示，<strong>维持广泛的迁移能力，与把模型进一步适配到机器人任务上，需要同时权衡。</strong></p>
+<p>这让Scaling与采样策略接成了同一个问题的两部分：<strong>扩大并结合两类经验，可以把能力推得更高；让这些经验以怎样的比例、怎样的顺序持续参与训练，则会影响增长体现在哪些能力上。</strong>从混合数据的额外收益，到直接迁移与后训练适配的不同取舍，人类经验和机器人监督都需要被持续考虑。</p>
 </section>
 
 <section id="a3-outlook"><h2><span>结语</span>共享经验，最终要体现为能够迁移的行动</h2>
