@@ -1,0 +1,317 @@
+{
+  "zero_shot": [
+    {
+      "id": "zero-bowl-stack",
+      "title": "Bowl stacking",
+      "category": "placement",
+      "src": "assets/videos/zero-shot/zero-bowl-stack.mp4",
+      "poster": "assets/posters/zero-shot/zero-bowl-stack.jpg",
+      "source_name": "叠碗.mp4",
+      "duration": 12.132,
+      "playback_note": "Source playback speed preserved.",
+      "source_sha256": "210aa57f816b5894f99fbd0244b2d17ed0ff6f7074e3f61d7979acab9e6fda07",
+      "output_sha256": "d946f32c8f9a3c7625ccfc905fe9c5fe95f181570caf9227483c3ce624b94fcc",
+      "camera_view": "third-person",
+      "dimensions": [
+        640,
+        360
+      ],
+      "frame_rate": "91000/3033",
+      "frame_count": 364,
+      "poster_time": 9.099,
+      "size_bytes": 323758
+    },
+    {
+      "id": "zero-two-drinks-1",
+      "title": "Lifting two drinks · example 1",
+      "category": "coordination",
+      "src": "assets/videos/zero-shot/zero-two-drinks-1.mp4",
+      "poster": "assets/posters/zero-shot/zero-two-drinks-1.jpg",
+      "source_name": "抓两瓶饮料1.mp4",
+      "duration": 14.899,
+      "playback_note": "Source playback speed preserved.",
+      "source_sha256": "49b6f5f472271a1db60517b4a90003cb31f0d7e06a6a6f539f3e0e2129ffa9cb",
+      "output_sha256": "dcb6a1955a2df371272b98cf93432014f3c38c626f3d3e2a6f9081556644eafe",
+      "camera_view": "third-person",
+      "dimensions": [
+        640,
+        360
+      ],
+      "frame_rate": "447000/14899",
+      "frame_count": 447,
+      "poster_time": 12.664,
+      "size_bytes": 367440
+    },
+    {
+      "id": "zero-egg-ball-sort",
+      "title": "Sorting an egg and a ball",
+      "category": "placement",
+      "src": "assets/videos/zero-shot/zero-egg-ball-sort.mp4",
+      "poster": "assets/posters/zero-shot/zero-egg-ball-sort.jpg",
+      "source_name": "鸡蛋和球分别放左右碗.mp4",
+      "duration": 10.1,
+      "playback_note": "Source playback speed preserved.",
+      "source_sha256": "8af8ec518e5be8e16db6efc12a34f34605e5b3ee96a89e23404c0ca28f5ebd4f",
+      "output_sha256": "c7272232d3d9e48166c92fd6bfc24efb9dc743e434458d699211a2932f1343bc",
+      "camera_view": "robot",
+      "dimensions": [
+        640,
+        360
+      ],
+      "frame_rate": "30/1",
+      "frame_count": 303,
+      "poster_time": 6.767,
+      "size_bytes": 407129,
+      "legacy_id": "zero-sort",
+      "goal": {
+        "src": "assets/goals/zero-shot/zero-egg-ball-sort.webp",
+        "width": 632,
+        "height": 304,
+        "source": "videos/zero-shot/鸡蛋和球分别放左右碗/鸡蛋和球分别放左右碗-第一视角.mp4",
+        "source_sha256": "e0b0d20effe4c32c4c61a9c591c26b5b888fb11bb95437ace6fafbeb2bc8df66",
+        "time_seconds": 1,
+        "crop_xywh": [
+          4,
+          30,
+          632,
+          304
+        ],
+        "provenance": "Fixed input-goal pane in the original interface recording."
+      }
+    },
+    {
+      "id": "zero-mug-body",
+      "title": "Mug placement · body grasp",
+      "category": "precision",
+      "src": "assets/videos/zero-shot/zero-mug-body.mp4",
+      "poster": "assets/posters/zero-shot/zero-mug-body.jpg",
+      "source_name": "杯子放在杯垫上-夹瓶身.mp4",
+      "duration": 11.966667,
+      "playback_note": "Source playback speed preserved.",
+      "source_sha256": "44c51daa77663bdb2bbcf03d0617c613bbf1109970a8bb66f32038dfacd9429f",
+      "output_sha256": "5d11d145048ebfaa5d4260f0e9bc30592c911db68ed8275426e401cfeac6f8ab",
+      "camera_view": "robot",
+      "dimensions": [
+        640,
+        360
+      ],
+      "frame_rate": "30/1",
+      "frame_count": 359,
+      "poster_time": 8.616,
+      "size_bytes": 409521,
+      "goal": {
+        "src": "assets/goals/zero-shot/zero-mug-body.webp",
+        "width": 632,
+        "height": 304,
+        "source": "videos/zero-shot/杯子放在杯垫上——夹瓶身版/拿杯子-2-1.mp4",
+        "source_sha256": "0c6e48ef94134564ea8d632899b49826ac1f32d799d4e6633d4daef4f9a2edb3",
+        "time_seconds": 1,
+        "crop_xywh": [
+          4,
+          30,
+          632,
+          304
+        ],
+        "provenance": "Fixed input-goal pane in the original interface recording."
+      }
+    },
+    {
+      "id": "zero-book-storage",
+      "title": "Book organization",
+      "category": "placement",
+      "src": "assets/videos/zero-shot/zero-book-storage.mp4",
+      "poster": "assets/posters/zero-shot/zero-book-storage.jpg",
+      "source_name": "书本收纳.mp4",
+      "duration": 21.133008,
+      "playback_note": "Source playback speed preserved.",
+      "source_sha256": "6c2310de4025fee43a14f1e37edb1ae567dfe9d31cb70c6a96087c7e363a3642",
+      "output_sha256": "d36821dfec5030f14b2537ee3195635b0b3999ea1b55b14fe6c8b494d1ee4ba7",
+      "camera_view": "robot",
+      "dimensions": [
+        640,
+        360
+      ],
+      "frame_rate": "30/1",
+      "frame_count": 634,
+      "poster_time": 13.736,
+      "size_bytes": 569156,
+      "goal": {
+        "src": "assets/goals/zero-shot/zero-book-storage.webp",
+        "width": 632,
+        "height": 304,
+        "source": "videos/zero-shot/书本收纳/移动书.mp4",
+        "source_sha256": "0e116e23590a22d69e0da3706646ea9687637b28d28df891ae37254921c6ba23",
+        "time_seconds": 1,
+        "crop_xywh": [
+          4,
+          30,
+          632,
+          304
+        ],
+        "provenance": "Fixed input-goal pane in the original interface recording."
+      }
+    },
+    {
+      "id": "zero-glue-placement",
+      "title": "Glue-stick placement",
+      "category": "precision",
+      "src": "assets/videos/zero-shot/zero-glue-placement.mp4",
+      "poster": "assets/posters/zero-shot/zero-glue-placement.jpg",
+      "source_name": "胶棒放到笔筒.mp4",
+      "duration": 17.7,
+      "playback_note": "Source playback speed preserved.",
+      "source_sha256": "d281750d93e4fe7f3fddf2d04a56f6eeea7acd4e46419be17723e43d922feecd",
+      "output_sha256": "895b5d8651cdea345a2cd750e68f11a41fed09747dc708a41d06143278a33e27",
+      "camera_view": "robot",
+      "dimensions": [
+        640,
+        360
+      ],
+      "frame_rate": "30/1",
+      "frame_count": 531,
+      "poster_time": 12.39,
+      "size_bytes": 651359,
+      "legacy_id": "zero-glue",
+      "goal": {
+        "src": "assets/goals/zero-shot/zero-glue-placement.webp",
+        "width": 632,
+        "height": 304,
+        "source": "videos/zero-shot/胶棒放到笔筒里 ——根据goal image有笔筒位置调整/胶棒放到笔筒_.mp4",
+        "source_sha256": "65483e27a3a6f9e3129d23209531dc255d3281f32e98686e9c734b5314e27962",
+        "time_seconds": 1,
+        "crop_xywh": [
+          4,
+          30,
+          632,
+          304
+        ],
+        "provenance": "Fixed input-goal pane in the original interface recording."
+      }
+    },
+    {
+      "id": "zero-object-handover",
+      "title": "Bimanual object handling",
+      "category": "coordination",
+      "src": "assets/videos/zero-shot/zero-object-handover.mp4",
+      "poster": "assets/posters/zero-shot/zero-object-handover.jpg",
+      "source_name": "排序换手.mp4",
+      "duration": 41.866016,
+      "playback_note": "Source playback speed preserved.",
+      "source_sha256": "9aa97f86722c3c5daffed9c5b3154944a2a1bfd01c40fb1f93697350116aaba2",
+      "output_sha256": "6c4e1cd8289a6fcb480487511f239ef317bf3c6ec75aa9ec1b3852ad80f9d44f",
+      "camera_view": "robot",
+      "dimensions": [
+        640,
+        360
+      ],
+      "frame_rate": "30/1",
+      "frame_count": 1256,
+      "poster_time": 20.933,
+      "size_bytes": 1394739,
+      "legacy_id": "zero-handover",
+      "goal": {
+        "src": "assets/goals/zero-shot/zero-object-handover.webp",
+        "width": 632,
+        "height": 304,
+        "source": "videos/zero-shot/排序——出现“换手”的双手协作/排序换手-1.mp4",
+        "source_sha256": "90aed3002635876e139aa30101dc58890169dbb1556426917604afb4edad7e02",
+        "time_seconds": 1,
+        "crop_xywh": [
+          4,
+          30,
+          632,
+          304
+        ],
+        "provenance": "Fixed input-goal pane in the original interface recording."
+      }
+    },
+    {
+      "id": "zero-human-handover",
+      "title": "Bottle handover to a person",
+      "category": "coordination",
+      "src": "assets/videos/zero-shot/zero-human-handover.mp4",
+      "poster": "assets/posters/zero-shot/zero-human-handover.jpg",
+      "source_name": "飞书20261104-175922.mp4",
+      "source_path": "videos/飞书20261104-175922.mp4",
+      "source_sha256": "d6e93a4d5177ae8edd3e61abbf40235e89540505efaa650f4b8a291fce93bb8f",
+      "output_sha256": "9657999c589cc0415aa5680f16e0ed7d852d9bed7d5f2ff254e1e7b8c499585f",
+      "camera_view": "robot",
+      "dimensions": [
+        640,
+        360
+      ],
+      "duration": 21.618005,
+      "size_bytes": 1983212,
+      "crop_xywh": [
+        640,
+        0,
+        640,
+        360
+      ],
+      "goal": {
+        "src": "assets/goals/zero-shot/zero-human-handover.jpg",
+        "width": 632,
+        "height": 304,
+        "source": "videos/飞书20261104-175922.mp4",
+        "time_seconds": 1,
+        "crop_xywh": [
+          4,
+          30,
+          632,
+          304
+        ],
+        "provenance": "Fixed input-goal pane in the original interface recording."
+      }
+    }
+  ],
+  "additional_icl": [
+    {
+      "file": "desk-upper.mp4",
+      "source": "https://jiankai-ss.github.io/open-humanscale/assets/videos/clean-goals/desk-upper.mp4?v=7"
+    },
+    {
+      "file": "desk-upper-poster.webp",
+      "source": "https://jiankai-ss.github.io/open-humanscale/assets/posters/clean-goals/desk-upper.webp?v=7"
+    },
+    {
+      "file": "desk-upper-goal.webp",
+      "source": "https://jiankai-ss.github.io/open-humanscale/assets/goals/desk-upper.webp"
+    },
+    {
+      "file": "desk-middle.mp4",
+      "source": "https://jiankai-ss.github.io/open-humanscale/assets/videos/clean-goals/desk-middle.mp4?v=7"
+    },
+    {
+      "file": "desk-middle-poster.webp",
+      "source": "https://jiankai-ss.github.io/open-humanscale/assets/posters/clean-goals/desk-middle.webp?v=7"
+    },
+    {
+      "file": "desk-middle-goal.webp",
+      "source": "https://jiankai-ss.github.io/open-humanscale/assets/goals/desk-middle.webp"
+    },
+    {
+      "file": "human-books-right.mp4",
+      "source": "https://jiankai-ss.github.io/open-humanscale/assets/videos/clean-goals/human-books-right.mp4?v=7"
+    },
+    {
+      "file": "human-books-right-poster.webp",
+      "source": "https://jiankai-ss.github.io/open-humanscale/assets/posters/clean-goals/human-books-right.webp?v=7"
+    },
+    {
+      "file": "human-books-right-goal.webp",
+      "source": "https://jiankai-ss.github.io/open-humanscale/assets/goals/human-books-right.webp"
+    },
+    {
+      "file": "human-books-left.mp4",
+      "source": "https://jiankai-ss.github.io/open-humanscale/assets/videos/clean-goals/human-books-left.mp4?v=7"
+    },
+    {
+      "file": "human-books-left-poster.webp",
+      "source": "https://jiankai-ss.github.io/open-humanscale/assets/posters/clean-goals/human-books-left.webp?v=7"
+    },
+    {
+      "file": "human-books-left-goal.webp",
+      "source": "https://jiankai-ss.github.io/open-humanscale/assets/goals/human-books-left.webp"
+    }
+  ]
+}

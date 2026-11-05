@@ -1,0 +1,76 @@
+<header class="article-header">
+  <p class="eyebrow">02 / VISUAL GOAL ICL → LONG HORIZON</p>
+  <h1>换张目标图，<br>机器人换种收纳法</h1>
+  <p class="deck">玩具放进哪个箱子，书本按什么顺序堆叠，杯子最后摆在哪里？Open-HumanScale展示视觉目标如何改变机器人的操作，并将多种技能连接成连续的整理流程。</p>
+  <div class="byline"><span>Open-HumanScale · 能力观察</span><span>2026年11月5日 · 审阅稿 v2</span></div>
+<nav class="story-jumps" aria-label="第二篇重点"><a href="#a2-drawer-demo">抽屉目标对照 ↘</a><a href="#a2-human-demo">人类目标图 ↘</a><a href="#a2-desk">连续整理 ↘</a></nav>
+</header>
+<div class="prose">
+<p class="lead">桌面上散落着玩具车、毛绒玩具和几本书。给机器人一张整理后的目标图：玩具车放进蓝箱，毛绒玩具放进白箱，绿色封面的书放在书堆最上面。</p>
+<p>换一张图，把两类玩具的收纳位置对调。机器人随之改变了分类去向。再换一张图，要求紫色封面的书在上、整摞书靠近白箱，堆叠结果也跟着变化。</p>
+<p>这些对照中，机器人使用同一个经过任务后训练的策略，推理时参数保持冻结。改变行为的输入，是眼前那张描述期望结果的图片。</p>
+<p><strong>目标图，正在成为一种直接指定机器人操作结果的接口。</strong></p>
+<div class="paired-demo"><figure><span class="demo-label">目标 A · 车进蓝箱，毛绒玩具进白箱</span><img class="goal-image" src="assets/toy-reference-goal.webp" alt="目标A：玩具车进蓝箱，毛绒玩具进白箱"><video controls playsinline preload="none" poster="assets/toy-reference-poster.webp" src="assets/toy-reference.mp4" aria-label="目标A的机器人执行视频"></video></figure><figure><span class="demo-label">目标 B · 两类玩具交换去向</span><img class="goal-image" src="assets/toy-swap-goal.webp" alt="目标B：毛绒玩具进蓝箱，玩具车进白箱"><video controls playsinline preload="none" poster="assets/toy-swap-poster.webp" src="assets/toy-swap.mp4" aria-label="目标B的机器人执行视频"></video></figure><div class="pair-actions"><button id="play-pair">一起播放对照</button><button id="pause-pair">暂停</button></div><p class="media-caption">同一策略，不同视觉目标。以上为任务后训练后的定性演示，来自项目页。</p></div>
+
+<section id="a2-interface"><h2><span>01</span>“整理一下”，可以有很多种正确答案</h2>
+<p>人给机器人下指令时，经常省略大量细节。整理桌面之后，杯子应该靠近显示器，还是放到文件架旁？文具应该装进上层抽屉，还是中层抽屉？两种摆法都可能合理，但用户心里往往有一个具体答案。</p>
+<p>一张目标图可以把这些细节同时展示出来：对象之间的空间关系、物品的分类去向，以及任务完成后的摆放状态。</p>
+<p>Open-HumanScale中的HumanWAM-Goal把视觉目标作为模型的输入，与语言、当前画面及机器人状态共同参与动作生成。模型联合预测后续视觉状态和可执行动作，让“现在看到什么”“希望变成什么样”与“下一步怎么做”建立联系。</p>
+<p>在论文的定义中，固定策略根据推理时提供的视觉上下文调整行为，构成了一种具身上下文学习（Visual Goal ICL）。它的关键观察是：<strong>模型权重保持不变，新的目标图片能够改变执行结果。</strong></p>
+<p>目标图表达的是期望状态，具体的抓取、搬运、放置仍需要机器人结合当前场景去执行。正因为如此，成对目标下的行为变化，比单独展示一次成功整理更能说明这个接口的作用。</p>
+</section>
+
+<section id="a2-composition"><h2><span>02</span>从“放哪里”，到同时满足多个整理要求</h2>
+<p>研究团队首先在未经目标任务后训练的混合预训练模型上检查目标响应。同一初始桌面场景中，一张图要求把瓶子放到绿色积木前方，另一张图要求放到紫色大积木上。模型会朝不同目标位置执行，显示出预训练阶段已经获得的空间目标响应；其中高处放置后的释放稳定性仍不完善。</p>
+<p>更复杂的对照，在任务后训练之后展开。玩具整理实验同时包含类别、容器、书本顺序与位置等多个约束：更换目标图后，模型交换玩具车与毛绒玩具的收纳箱；在另一组目标中，又改变最上方书本的颜色，以及整摞书的摆放位置。</p>
+<figure><button class="zoom" data-image="assets/icl.png" aria-label="放大三组视觉目标与执行对照"><img src="assets/icl.png" alt="同一策略在三种目标图下改变玩具分类、书本堆叠顺序及摆放位置" loading="lazy"></button><figcaption>三个目标，三种整理结果。分类去向、堆叠顺序和书堆位置随视觉目标改变。来源：论文Fig. 24；任务后训练后的固定策略。</figcaption></figure>
+<p>这些变化让视觉目标的作用从单个物体的位置，扩展到了多个对象之间的组合关系。一幅画面，能够同时指定“哪类东西放哪里”和“以什么顺序摆放”。</p>
+<p>办公桌场景把要求推进了一步：目标图决定胶带与卷尺进入上层还是中层抽屉，机器人需要先打开对应抽屉，再放入物品。另一组成对目标交换胶棒和两支笔在左右笔筒中的去向，执行结果也随之调整。</p>
+<div class="paired-demo" id="a2-drawer-demo"><figure><span class="demo-label">目标 A · 收进上层抽屉</span><img class="goal-image" src="assets/desk-upper-goal.webp" alt="目标 A · 收进上层抽屉" loading="lazy"><video controls muted playsinline preload="none" poster="assets/desk-upper-poster.webp" src="assets/desk-upper.mp4" aria-label="目标 A · 收进上层抽屉：机器人执行"></video></figure><figure><span class="demo-label">目标 B · 改放中层抽屉</span><img class="goal-image" src="assets/desk-middle-goal.webp" alt="目标 B · 改放中层抽屉" loading="lazy"><video controls muted playsinline preload="none" poster="assets/desk-middle-poster.webp" src="assets/desk-middle.mp4" aria-label="目标 B · 改放中层抽屉：机器人执行"></video></figure><div class="pair-actions"><button data-play-pair>一起播放对照</button><button data-pause-pair>暂停</button></div><p class="media-caption">同一策略，根据视觉目标选择不同抽屉，完成开屉与收纳。任务后训练后的固定策略。</p></div>
+<p>在这些任务里，实现目标需要完成中间操作。视觉上下文不仅影响最后一刻的落点，也与整段操作过程相关。</p>
+</section>
+
+<section id="a2-human"><h2><span>03</span>目标图里出现人手，机器人还能照着做吗？</h2>
+<p>Open-HumanScale还有一组特别直观的实验：把机器人目标图换成人类第一视角的目标图。</p>
+<p>图片里可以看到人的双手，观察视角和机器人画面也存在差异。但目标仍然明确：棕色笔记本应插在文件架最右侧，或者最左侧；杯子需要先盖好，再放到显示器附近，或者文件架旁边。</p>
+<p>在这些成对演示中，经过任务后训练的机器人策略能够依据不同人类目标图改变放置结果。文件架中的棕色笔记本换了位置，带盖杯子也被送到了另一处目标区域。</p>
+<div class="paired-demo" id="a2-human-demo"><figure><span class="demo-label">人类目标 A · 棕色笔记本放右侧</span><img class="goal-image" src="assets/human-books-right-goal.webp" alt="人类目标 A · 棕色笔记本放右侧" loading="lazy"><video controls muted playsinline preload="none" poster="assets/human-books-right-poster.webp" src="assets/human-books-right.mp4" aria-label="人类目标 A · 棕色笔记本放右侧：机器人执行"></video></figure><figure><span class="demo-label">人类目标 B · 棕色笔记本放左侧</span><img class="goal-image" src="assets/human-books-left-goal.webp" alt="人类目标 B · 棕色笔记本放左侧" loading="lazy"><video controls muted playsinline preload="none" poster="assets/human-books-left-poster.webp" src="assets/human-books-left.mp4" aria-label="人类目标 B · 棕色笔记本放左侧：机器人执行"></video></figure><div class="pair-actions"><button data-play-pair>一起播放对照</button><button data-pause-pair>暂停</button></div><p class="media-caption">目标图中保留人手与人类视角，机器人按不同空间关系完成笔记本收纳。任务后训练后的固定策略。</p></div>
+<p>这一现象支持了人机联合训练的一个方向：与任务相关的物体关系和目标语义，有机会跨越人手与机械夹爪之间的视觉差异，为机器人提供操作依据。</p>
+<p>对于使用者，这样的接口很容易理解：把希望实现的摆放状态展示出来，机器人再结合自身的控制能力完成操作。这些实验展示的是特定场景中的目标迁移，为更广泛的跨视角、跨场景使用提供了值得继续测试的起点。</p>
+</section>
+
+<section id="a2-desk"><h2><span>04</span>把一次放置，延伸成14个连续阶段</h2>
+<p>目标响应解决了“如何改变结果”的问题。真正的整理工作还要求机器人持续做下去：前一个动作改变了场景，后一个动作必须接着这个状态继续。</p>
+<p>论文展示了一段任务后训练后的连续桌面整理轨迹，共划分为14个阶段。机器人先给杯子盖上盖子并移动到指定位置，再把笔和胶棒收进笔筒，打开不同抽屉存放胶带、卷尺并关好，最后把笔记本插入文件架。</p>
+<div class="task-flow"><span>盖好并放置杯子</span><b>→</b><span>收纳文具</span><b>→</b><span>抽屉储物</span><b>→</b><span>整理笔记本</span></div>
+<figure class="video-figure"><video controls playsinline preload="none" poster="assets/long-desk-poster.webp" src="assets/long-desk.mp4" aria-label="连续桌面整理演示"></video><figcaption>桌面长程整理：覆盖杯子、文具、抽屉和笔记本的连续操作。项目页演示；经过任务后训练。</figcaption></figure>
+<p>这段任务同时涉及刚性物体搬运、容器插入、抽屉开合以及狭小空间中的放置。更重要的是，已经完成的整理需要被保留下来：后续操作要绕开杯子，关上的抽屉不应被再次扰乱，文件架旁的动作也要适应逐渐变化的桌面布局。</p>
+<p><strong>长程能力的看点，在于多种技能能够沿着不断变化的场景接续执行。</strong>14个阶段提供了一个具体观察窗口，展示了模型如何把单次动作组织成一段有连续性的工作流程。</p>
+</section>
+
+<section id="a2-household"><h2><span>05</span>离开桌面，走向跨区域家务</h2>
+<p>另一段演示把空间范围扩大到了多个工作区域。</p>
+<p>机器人先在主桌前分类玩具、堆叠书本，接着移动到边桌拿起两个塑料瓶，转向垃圾桶并丢弃；随后前往两张椅子收集衣物，放进洗衣篮，最后返回已经整理过的主桌。</p>
+<figure class="video-figure"><video controls playsinline preload="none" poster="assets/long-household-poster.jpg" src="assets/long-household.mp4" aria-label="跨区域移动家务演示"></video><figcaption>跨区域连续家务：玩具与书本 → 丢弃空瓶 → 收集衣物 → 返回主桌。论文Fig. 28以28张关键帧展示该轨迹；项目页视频为任务后训练后的定性演示。</figcaption></figure>
+<p>这段流程把移动、双臂操作以及不同物体类型串在一起：玩具和瓶子是刚性物体，衣物则会形变；操作区域从桌面转移到椅子和洗衣篮附近，每次移动都会带来新的观察条件。</p>
+<p>HumanWAM-Goal使用包含末端执行器、关节与底盘信息的统一动作表示，为移动与操作提供共同接口。论文通过连续轨迹展示了这些能力的衔接，桌面与移动家务两种场景共同拓宽了长程执行的观察范围。</p>
+</section>
+
+<section id="a2-scale"><h2><span>06</span>目标条件与Scaling，如何共同形成能力？</h2>
+<p>前面展示的视觉目标响应，背后是模型设计与规模化训练的结合。HumanWAM-Goal把两者连接起来：<strong>Goal condition明确“希望实现什么结果”，Scaling积累“如何完成这些操作”的经验。</strong></p>
+<p>在模型架构中，目标图经过视觉编码，并加入专门的目标嵌入，与当前观测区分开来。目标图、语言指令、当前及可选的历史画面、机器人状态，共同构成生成条件。共享的视频—动作生成器据此联合预测未来视觉状态与动作序列，把目标中的空间关系连接到连续控制。</p>
+<figure id="a2-goal-architecture"><button class="zoom" data-image="assets/humanwam-goal-architecture.png" aria-label="放大HumanWAM-Goal架构图"><img src="assets/humanwam-goal-architecture.png" alt="HumanWAM-Goal架构：目标图、语言、视觉观测与机器人状态共同作为条件，视频与动作通过共享生成器联合预测" loading="lazy"></button><figcaption>HumanWAM-Goal架构。上部为包含目标图的条件输入，下部为视频与动作的联合生成；目标条件在生成过程中保持固定。来源：论文Fig. 16。</figcaption></figure>
+<p>这样的目标条件设计，让新的摆放位置、分类去向和物体关系能够通过输入传给同一个策略。要把这些要求变成可执行的动作，还需要足够丰富的操作经验，这正是数据Scaling发挥作用的地方。</p>
+<p>在纯人类数据实验中，随着预训练规模从100小时扩展到5万小时，经统一机器人后训练后的Random成功率从21.5%提高至42.9%。数据覆盖更多任务与场景时，性能随规模增长的趋势也更明显。</p>
+<p>接下来，研究者把机器人控制数据与人类经验放到同一训练框架中。机器人数据逐步增加后，再固定14,618小时机器人数据，加入两档人类数据，既继续改善了后训练后的泛化表现，也提升了直接部署的零样本能力。</p>
+<p>基于总计约6万小时机器人＋人类混合数据，模型在20项真机任务上的平均零样本成功率达到30.5%，高于仅机器人数据版本的20.0%。这部分评测没有进行目标任务后训练，与前面复杂ICL和长程演示的训练条件不同。</p>
+<p><strong>目标条件设计与Scaling在执行时汇合：前者指定期望状态，后者提供可迁移的操作基础，共同支撑同一模型根据不同目标调整行为。</strong>在这套预训练基础上，任务后训练进一步支持更复杂的目标组合与连续操作，将视觉目标ICL延伸到长程任务。</p>
+</section>
+
+<section id="a2-outlook"><h2><span>07</span>把“想要什么样”，变成可以执行的输入</h2>
+<p>对机器人而言，理解一个目标和完成一个目标之间，有很长的距离。Open-HumanScale的这些演示，把这段距离具体呈现为可观察的行为：识别目标位置，选择收纳对象，调整操作顺序，再把动作接成一段工作流程。</p>
+<p>其中最直观的变化，是用户表达目标的方式。语言可以描述任务，图片可以补充空间关系和最终状态。两者结合，为用户或上层规划系统调用机器人操作能力，提供了一种更具体的接口。</p>
+<p><strong>从“把桌子整理一下”，到“整理成这张图的样子”，视觉目标让机器人需要完成的事情，变得更清楚了。</strong>而如何让这种目标响应跨越更多环境、持续更长时间，将是下一步需要继续回答的问题。</p>
+</section>
+<aside class="sources"><p class="source-label">研究与资源</p><p><a href="https://arxiv.org/pdf/2611.06817" target="_blank" rel="noopener">阅读论文 ↗</a><a href="https://jiankai-ss.github.io/open-humanscale/" target="_blank" rel="noopener">观看更多演示 ↗</a></p><p>本文行为描述依据论文第6节及项目演示。复杂目标ICL、人类目标图与长程任务使用经过任务后训练的策略；推理时策略参数保持冻结。演示片段用于展示行为，不等同于整体成功率统计。</p></aside>
+</div>

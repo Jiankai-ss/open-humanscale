@@ -1,0 +1,5 @@
+local-assets-backup/
+preview*.jpg
+.DS_Store
+__pycache__/
+publication-status.json
