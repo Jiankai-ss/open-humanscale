@@ -13,7 +13,7 @@ Open-HumanScale 双篇公众号文稿 / v2 / 2026-11-05
 数据依据：用户提供的2026-11-05本地论文PDF，第3—6节。
 图表：从同一论文目录中的原始PDF图导出。
 视频与目标图：用户提供的公开项目页对应素材，保存在dist/assets。
-项目：https://jiankai-ss.github.io/open-humanscale/
+项目：https://dagroup-pku.github.io/open-humanscale/
 论文：https://arxiv.org/pdf/2611.06817
 
 正式发布前可以进一步确认的材料：

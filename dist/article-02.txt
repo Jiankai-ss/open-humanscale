@@ -124,5 +124,5 @@ HumanWAM-Goal架构。上部为包含目标图的条件输入，下部为视频�
 本文行为描述依据论文第6节及项目演示。复杂目标ICL、人类目标图与长程任务使用经过任务后训练的策略；推理时策略参数保持冻结。演示片段用于展示行为，不等同于整体成功率统计。
 
 论文：https://arxiv.org/pdf/2611.06817
-项目：https://jiankai-ss.github.io/open-humanscale/
+项目：https://dagroup-pku.github.io/open-humanscale/
 

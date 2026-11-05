@@ -38,7 +38,7 @@ class ExtractText(HTMLParser):
 for i, article in enumerate(articles, 1):
     parser=ExtractText();parser.feed(article)
     text = re.sub(r'\n\s*\n(?:\s*\n)+', '\n\n', ''.join(parser.parts)).strip()
-    text += '\n\n论文：https://arxiv.org/pdf/2611.06817\n项目：https://jiankai-ss.github.io/open-humanscale/\n'
+    text += '\n\n论文：https://arxiv.org/pdf/2611.06817\n项目：https://dagroup-pku.github.io/open-humanscale/\n'
     (DIST / f'article-{i:02}.txt').write_text(text+'\n')
     print(f'Article {i}: {len(re.sub(r"\s", "", text))} characters')
 print('Built', DIST / 'index.html')

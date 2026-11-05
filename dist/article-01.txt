@@ -176,5 +176,5 @@ ZERO-SHOT · 12秒 · 机器人视角把杯子放到垫子上抓取杯身，移�
 本文数据依据论文第3、4、5、6节。经验Scaling关系限定于已测试范围与协议。数据、模型和代码的具体开放状态以项目页面公告为准。
 
 论文：https://arxiv.org/pdf/2611.06817
-项目：https://jiankai-ss.github.io/open-humanscale/
+项目：https://dagroup-pku.github.io/open-humanscale/
 
