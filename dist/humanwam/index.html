@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>6万小时经验，让机器人会得更多 · HumanWAM</title>
+<meta name="description" content="一篇看全HumanWAM：从约6万小时人机混合Scaling，到RoboTwin SOTA、零样本操作、视觉目标ICL与长程家务。含多组真实机器人演示。">
+<link rel="canonical" href="https://jiankai-ss.github.io/open-humanscale/humanwam/">
+<meta property="og:type" content="article"><meta property="og:title" content="6万小时经验，让机器人会得更多 · HumanWAM">
+<meta property="og:description" content="从零样本上手、视觉目标ICL到长程家务，一起看HumanWAM的成绩与真实机器人演示。">
+<meta property="og:url" content="https://jiankai-ss.github.io/open-humanscale/humanwam/">
+<meta property="og:image" content="https://jiankai-ss.github.io/open-humanscale/humanwam/assets/humanwam-intro-v1.jpg">
+<meta name="theme-color" content="#111b22"><link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' rx='8' fill='%23d5f67b'/%3E%3Ctext x='9' y='29' fill='%23111b22' font-size='27' font-family='Arial'%3EH%3C/text%3E%3C/svg%3E">
+<link rel="stylesheet" href="benchmark-motion.css"><link rel="stylesheet" href="style.css">
+<script src="benchmark-data-v20.js" defer></script><script src="benchmark-motion.js" defer></script><script src="app.js" defer></script></head>
+<body><a class="skip-link" href="#story">跳到正文</a><div class="progress" aria-hidden="true"></div>
+<nav class="topbar" aria-label="页面导航"><a class="brand" href="#top"><b>H</b> HumanWAM<span> / FIELD NOTES</span></a><div class="nav-links"><a href="#zero">Zero-shot</a><a href="#goals">Goal ICL</a><a href="#long">长程任务</a><a href="#scaling">Scaling</a></div><button class="copy-button" data-copy>复制文稿</button><a class="download" href="article.txt" download>下载 ↗</a></nav>
+<main id="story"><header class="hero" id="top">
+<div class="hero-inner"><div class="eyebrow"><span class="live-dot"></span> HUMANWAM / RESEARCH IN ACTION</div>
+<h1>6万小时经验，<br><em>让机器人会得更多。</em></h1>
+<p class="hero-deck">零样本上手，换张图改变做法，再把动作接成一整段家务。<br class="desktop-break">从人类与机器人的共同经验出发，HumanWAM把Scaling的收益变成可见的行动。</p>
+<div class="hero-meta"><span>研究特写 · 综合稿</span><span>2026.11.06</span><a href="#showreel">从任务演示看起 ↓</a></div></div>
+<div class="hero-film" id="showreel"><video data-hero controls muted playsinline loop preload="metadata" poster="assets/humanwam-intro-v1.jpg" src="assets/humanwam-intro-v1.mp4" aria-label="HumanWAM任务介绍：字幕讲解六项操作，依次切换关键动作，最后展开多任务全景"></video><div class="film-foot"><span><i></i> HumanWAM · 单一预训练模型，多项任务能力</span><span>约1分钟介绍 / 关键动作剪辑 · 片段内原速</span></div></div>
+</header>
+<div class="intro-copy copy"><p class="opening">拿起胶棒，先调整笔筒，再把它收进去。把两个碗叠好，把鸡蛋和球分开放进不同的容器，接着用两只手重新安排桌面上的物体。</p>
+<p>这些操作，来自同一个预训练模型。面对目标任务，它不需要先收集一批示范，也不需要再更新模型参数。</p>
+<p>这只是HumanWAM展示的第一层能力。在这套预训练基础上完成任务后训练之后，给机器人换一张目标图，玩具的分类去向、抽屉的选择、书本的摆放关系，都可以随之改变。多个动作还能继续衔接，完成连续桌面整理和跨区域家务。</p>
+<p><strong>从“能做哪些事”，到“按什么要求做”，再到“能完成怎样的连续流程”，HumanWAM把机器人能力的扩展，落在了一组可以看见、可以比较的结果上。</strong></p></div>
+<div class="score-strip" aria-label="主要研究结果">
+<a href="#results"><small>RoboTwin · Zero-shot</small><strong>13.94<span>%</span></strong><p>预训练检查点直接评测</p></a>
+<a href="#results"><small>RoboTwin · 后训练SOTA</small><strong>88.65<span>%</span></strong><p>论文报告平均成功率</p></a>
+<a href="#zero"><small>真实机器人 · Zero-shot</small><strong>30.5<span>%</span></strong><p>20项任务平均成功率</p></a>
+<a href="#long"><small>连续桌面整理</small><strong>14<span>阶段</span></strong><p>同一条长程任务轨迹</p></a>
+</div>
+
+<section class="chapter" id="zero"><div class="section-head"><span class="chapter-index">01 / ZERO-SHOT</span><h2>拿来就做，<br>先让机器人动起来。</h2><p>一个预训练模型，接住多种操作需求。</p></div>
+<div class="copy"><p>机器人学习里，一个熟悉的流程是：先预训练，再为具体任务收集示范、微调。HumanWAM-Goal把检验往前推了一步——<strong>直接部署预训练检查点，看看它已经能做什么。</strong></p>
+<p>研究团队基于总计约6万小时的机器人＋人类数据训练模型，并在20项真机任务中，每项进行10次试验。混合模型的平均零样本成功率达到<strong>30.5%</strong>，高于仅机器人数据版本的20.0%，相对提升52.5%。至少成功过一次的任务，也从10项扩展到16项。</p>
+<p>增长发生在具体动作里。抓取并摇动瓶子的成功率从60%提高到90%，把积木放到托盘上从10%提高到50%；堆叠积木、排列积木和双手分别抬起瓶子，也出现了仅机器人数据基线未能完成的成功执行。</p></div>
+<div class="media-heading"><span>DEMO SELECTS</span><h3>抓取只是开始。</h3><p>分类、插入、堆叠与双手接续，让操作能力变得具体。</p></div>
+<div class="demo-grid"><figure class="demo-card"><video controls muted playsinline preload="none" poster="assets/zero-glue-placement.jpg" src="assets/zero-glue-placement.mp4" aria-label="先调笔筒，再放入胶棒"></video><figcaption><small>ZERO-SHOT / 精细收纳</small><h4>先调笔筒，再放入胶棒</h4></figcaption></figure><figure class="demo-card"><video controls muted playsinline preload="none" poster="assets/zero-object-handover.jpg" src="assets/zero-object-handover.mp4" aria-label="左手取物，暂存，再由右手接取"></video><figcaption><small>ZERO-SHOT / 双手协作</small><h4>左手取物，暂存，再由右手接取</h4></figcaption></figure><figure class="demo-card"><video controls muted playsinline preload="none" poster="assets/zero-bowl-stack.jpg" src="assets/zero-bowl-stack.mp4" aria-label="拿起、对齐，把两个碗叠好"></video><figcaption><small>ZERO-SHOT / 容器堆叠</small><h4>拿起、对齐，把两个碗叠好</h4></figcaption></figure><figure class="demo-card"><video controls muted playsinline preload="none" poster="assets/zero-egg-ball-sort.jpg" src="assets/zero-egg-ball-sort.mp4" aria-label="鸡蛋与球，分别送入不同容器"></video><figcaption><small>ZERO-SHOT / 分类放置</small><h4>鸡蛋与球，分别送入不同容器</h4></figcaption></figure><figure class="demo-card"><video controls muted playsinline preload="none" poster="assets/zero-mug-body.jpg" src="assets/zero-mug-body.mp4" aria-label="把杯子放到杯垫上"></video><figcaption><small>ZERO-SHOT / 空间对齐</small><h4>把杯子放到杯垫上</h4></figcaption></figure><figure class="demo-card"><video controls muted playsinline preload="none" poster="assets/zero-book-storage.jpg" src="assets/zero-book-storage.mp4" aria-label="拿起书本，送入文件架"></video><figcaption><small>ZERO-SHOT / 桌面收纳</small><h4>拿起书本，送入文件架</h4></figcaption></figure></div>
+<p class="caption wide-caption">以上为zero-shot任务演示，使用预训练模型直接执行。成功率来自重复试验统计，片段保留原素材的播放速度；点开视频可全屏观看。</p>
+<div class="copy"><p>这里的zero-shot指<strong>没有目标任务示范、没有目标任务参数更新</strong>。模型此前已经学习了大规模人类与机器人经验；这次检验的，是这些经验能否在新的任务条件下直接派上用场。</p></div>
+</section>
+
+<section class="chapter results" id="results"><div class="section-head"><span class="chapter-index">02 / THE RESULTS</span><h2>直接用，有能力。<br>继续训练，有更高成绩。</h2><p>同一套混合预训练基础，两种评测方式。</p></div>
+<div class="copy"><p>在RoboTwin 2.0的zero-shot protocol下，HumanWAM-Goal平均成功率为<strong>13.94%</strong>，在论文成功完成评测的开源检查点中领先。对照中，仅机器人数据版本为11.48%，Pelican-VLA 0.5为4.70%，π₀.₅为1.06%。</p>
+<p>如果允许目标任务后训练，这套基础还能支撑更高的成绩。每任务使用50条Clean示范，并配合数据增强及后训练配方优化，HumanWAM-Goal取得<strong>92.70%的Clean→Clean、84.60%的Clean→Random成功率，平均88.65%，达到论文报告的RoboTwin 2.0 SOTA。</strong></p></div>
+<div class="benchmark-grid"><figure class="benchmark-card"><div class="benchmark-heading"><span>ZERO-SHOT / 直接部署</span><strong>13.94<small>%</small></strong></div><div class="benchmark-motion" data-benchmark-motion="zero"><div class="benchmark-original-stage"><button class="figure-button" data-image="assets/figures/robotwin-zero-table12-v20.svg" aria-label="放大：ZERO-SHOT / 直接部署成绩对照"><img src="assets/figures/robotwin-zero-table12-v20.svg" alt="ZERO-SHOT / 直接部署成绩对照" loading="lazy" decoding="async"></button></div></div><figcaption>论文成功完成评测的开源检查点对照。无RoboTwin目标任务后训练。平均值为Clean与Random的算术平均。</figcaption></figure><figure class="benchmark-card"><div class="benchmark-heading"><span>POST-TRAINING / SOTA</span><strong>88.65<small>%</small></strong></div><div class="benchmark-motion" data-benchmark-motion="post"><div class="benchmark-original-stage"><button class="figure-button" data-image="assets/figures/robotwin-post-table13-v20.svg" aria-label="放大：POST-TRAINING / SOTA成绩对照"><img src="assets/figures/robotwin-post-table13-v20.svg" alt="POST-TRAINING / SOTA成绩对照" loading="lazy" decoding="async"></button></div></div><figcaption>每任务50条Clean示范；50项任务 × 2种条件 × 100次评测，共10,000次。成绩来自论文报告。</figcaption></figure></div>
+<div class="copy"><p>两张榜单分别回答两个问题：模型在预训练结束时，已经具备多少可直接调用的能力？在这套基础上进一步学习目标任务，又能把成绩推到哪里？<strong>HumanWAM同时展示了这两种收益。</strong></p></div>
+</section>
+
+<section class="chapter goal-chapter" id="goals"><div class="section-head"><span class="chapter-index">03 / VISUAL GOAL ICL</span><h2>想换一种结果？<br>换张图。</h2><p>参数保持不变，新的视觉目标改变执行。</p></div>
+<div class="copy"><p>“把桌面整理好”，有很多种合理答案。玩具车放蓝箱还是白箱，文具收进哪层抽屉，哪本书应该在最上面？这些细节，可以同时出现在一张目标图里。</p>
+<p>HumanWAM-Goal将这张图作为推理时的上下文。模型结合目标、当前画面、语言与机器人状态，生成接下来的动作。在论文所展示的Visual Goal ICL中，<strong>策略权重固定，新的目标图片能够改变操作结果。</strong></p></div>
+<div class="media-heading"><span>COMPARE / 01</span><h3>同一桌玩具，换一套收纳规则。</h3></div>
+<div class="goal-pair"><figure><div class="goal-label">目标A · 车进蓝箱，毛绒玩具进白箱</div><div class="goal-photo"><span>GOAL / 目标图</span><button class="figure-button" data-image="assets/toy-reference-goal.webp" aria-label="放大：目标A · 车进蓝箱，毛绒玩具进白箱"><img src="assets/toy-reference-goal.webp" alt="目标A · 车进蓝箱，毛绒玩具进白箱" loading="lazy" decoding="async"></button></div><div class="execution-label">ACTION / 机器人执行 ↓</div><video controls muted playsinline preload="none" poster="assets/toy-reference-poster.webp" src="assets/toy-reference.mp4" aria-label="目标A · 车进蓝箱，毛绒玩具进白箱"></video></figure><figure><div class="goal-label">目标B · 两类玩具交换收纳箱</div><div class="goal-photo"><span>GOAL / 目标图</span><button class="figure-button" data-image="assets/toy-swap-goal.webp" aria-label="放大：目标B · 两类玩具交换收纳箱"><img src="assets/toy-swap-goal.webp" alt="目标B · 两类玩具交换收纳箱" loading="lazy" decoding="async"></button></div><div class="execution-label">ACTION / 机器人执行 ↓</div><video controls muted playsinline preload="none" poster="assets/toy-swap-poster.webp" src="assets/toy-swap.mp4" aria-label="目标B · 两类玩具交换收纳箱"></video></figure><div class="pair-controls"><button data-play-pair>▶ 同时播放对照</button><button data-pause-pair>暂停</button><span class="pair-status" role="status"></span></div><p class="caption">同一个经过任务后训练的策略，推理时参数固定；改变的是输入的视觉目标。</p></div>
+<div class="copy"><p>目标A要求玩具车进入蓝箱、毛绒玩具进入白箱；目标B交换两类玩具的去向。模型随之改变分类结果。在另一组目标中，书堆最上方的封面颜色、整摞书的位置也可以改变。一张图片，开始同时表达类别、顺序和空间关系。</p></div>
+<div class="media-heading"><span>COMPARE / 02</span><h3>目标换一层，动作也跟着变。</h3></div>
+<div class="goal-pair"><figure><div class="goal-label">目标A · 收进上层抽屉</div><div class="goal-photo"><span>GOAL / 目标图</span><button class="figure-button" data-image="assets/desk-upper-goal.webp" aria-label="放大：目标A · 收进上层抽屉"><img src="assets/desk-upper-goal.webp" alt="目标A · 收进上层抽屉" loading="lazy" decoding="async"></button></div><div class="execution-label">ACTION / 机器人执行 ↓</div><video controls muted playsinline preload="none" poster="assets/desk-upper-poster.webp" src="assets/desk-upper.mp4" aria-label="目标A · 收进上层抽屉"></video></figure><figure><div class="goal-label">目标B · 改放中层抽屉</div><div class="goal-photo"><span>GOAL / 目标图</span><button class="figure-button" data-image="assets/desk-middle-goal.webp" aria-label="放大：目标B · 改放中层抽屉"><img src="assets/desk-middle-goal.webp" alt="目标B · 改放中层抽屉" loading="lazy" decoding="async"></button></div><div class="execution-label">ACTION / 机器人执行 ↓</div><video controls muted playsinline preload="none" poster="assets/desk-middle-poster.webp" src="assets/desk-middle.mp4" aria-label="目标B · 改放中层抽屉"></video></figure><div class="pair-controls"><button data-play-pair>▶ 同时播放对照</button><button data-pause-pair>暂停</button><span class="pair-status" role="status"></span></div><p class="caption">视觉目标改变抽屉选择，机器人据此完成开屉与收纳。任务后训练后的固定策略。</p></div>
+<div class="copy"><p>上层抽屉与中层抽屉的区别，会改变整段收纳动作：机器人需要找到对应抽屉、打开、放入物品，再继续后面的整理。目标图指定的最终状态，因而能够影响执行过程中的中间步骤。</p>
+<p>这种目标响应在混合预训练阶段已有迹象：同一初始场景下，不同图片能引导模型把瓶子送往不同位置。这里展示的复杂分类与办公桌对照，则来自<strong>经过任务后训练、推理时参数冻结</strong>的策略。</p></div>
+<div class="media-heading"><span>COMPARE / 03</span><h3>目标来自人的视角，也能交给机器人。</h3></div>
+<div class="goal-pair"><figure><div class="goal-label">人类目标A · 棕色笔记本在右侧</div><div class="goal-photo"><span>GOAL / 目标图</span><button class="figure-button" data-image="assets/human-books-right-goal.webp" aria-label="放大：人类目标A · 棕色笔记本在右侧"><img src="assets/human-books-right-goal.webp" alt="人类目标A · 棕色笔记本在右侧" loading="lazy" decoding="async"></button></div><div class="execution-label">ACTION / 机器人执行 ↓</div><video controls muted playsinline preload="none" poster="assets/human-books-right-poster.webp" src="assets/human-books-right.mp4" aria-label="人类目标A · 棕色笔记本在右侧"></video></figure><figure><div class="goal-label">人类目标B · 棕色笔记本在左侧</div><div class="goal-photo"><span>GOAL / 目标图</span><button class="figure-button" data-image="assets/human-books-left-goal.webp" aria-label="放大：人类目标B · 棕色笔记本在左侧"><img src="assets/human-books-left-goal.webp" alt="人类目标B · 棕色笔记本在左侧" loading="lazy" decoding="async"></button></div><div class="execution-label">ACTION / 机器人执行 ↓</div><video controls muted playsinline preload="none" poster="assets/human-books-left-poster.webp" src="assets/human-books-left.mp4" aria-label="人类目标B · 棕色笔记本在左侧"></video></figure><div class="pair-controls"><button data-play-pair>▶ 同时播放对照</button><button data-pause-pair>暂停</button><span class="pair-status" role="status"></span></div><p class="caption">人类目标图中保留人手与第一视角，机器人按不同空间关系收纳笔记本。任务后训练后的固定策略。</p></div>
+<div class="copy"><p>带有人手的目标图，也能改变机器人执行的结果。棕色笔记本该放在文件架左侧还是右侧，模型依据图片调整；杯子的实验中，盖好盖子之后，放到显示器附近还是文件架旁，也可以由人类目标图指定。</p>
+<p>这让视觉目标成为一个直观的接口：把希望实现的物体关系展示出来，再由机器人结合眼前场景完成操作。人类经验与机器人能力，在一个具体目标上产生了连接。</p></div>
+</section>
+
+<section class="chapter" id="long"><div class="section-head"><span class="chapter-index">04 / LONG-HORIZON</span><h2>做完这一步，<br>还有下一步。</h2><p>从桌面整理，走向跨区域的连续家务。</p></div>
+<div class="copy"><p>真实工作往往需要一连串动作。杯子移走之后，桌面腾出新的空间；文具收进笔筒之后，机器人还要接着处理抽屉和书本。每一步都改变现场，下一步必须接着这个状态继续。</p>
+<p>论文展示的连续桌面整理轨迹，划分为<strong>14个阶段</strong>：盖好并移动杯子，收纳笔和胶棒，打开不同抽屉存放胶带与卷尺，再把笔记本插入文件架。</p></div>
+<figure class="long-film"><video controls muted playsinline preload="none" poster="assets/long-desk-poster.webp" src="assets/long-desk.mp4" aria-label="14阶段连续桌面整理"></video><figcaption><span>FILM 01 / 桌面整理</span><strong>杯子 → 文具 → 抽屉 → 笔记本</strong><p>14个阶段接续执行，覆盖搬运、插入、开合与放置。任务后训练后的演示。</p></figcaption></figure>
+<div class="copy"><p>另一段演示把工作范围拓展到了多个区域。机器人在主桌分类玩具、堆叠书本，然后移动到边桌拿起两个塑料瓶，转向垃圾桶丢弃；接着前往两张椅子收集衣物，放入洗衣篮，最后返回已经整理好的主桌。</p></div>
+<figure class="long-film"><video controls muted playsinline preload="none" poster="assets/long-household-poster.jpg" src="assets/long-household.mp4" aria-label="跨区域分类玩具、丢弃空瓶和收集衣物"></video><figcaption><span>FILM 02 / 跨区域家务</span><strong>整理玩具与书本 → 丢弃空瓶 → 收集衣物 → 返回</strong><p>移动与双臂操作相互衔接，处理玩具、瓶子及衣物等不同对象。任务后训练后的演示。</p></figcaption></figure>
+<div class="copy"><p>从一次抓取，到跨区域的工作流程，能力的要求发生了变化：模型需要把不同技能沿着不断变化的场景接续起来。<strong>目标响应决定“做成什么样”，连续执行让这一要求能够穿过多个操作环节。</strong></p></div>
+</section>
+
+<section class="chapter scaling" id="scaling"><div class="section-head"><span class="chapter-index">05 / WHY IT SCALES</span><h2>这些本领，<br>从规模化经验中长出来。</h2><p>纯人类、纯机器人、人机混合，三条相互衔接的Scaling路径。</p></div>
+<div class="copy"><p>前面的演示有一个共同起点：模型先接触足够丰富的操作经验，再把这些经验用于执行。HumanWAM研究首先构建了<strong>5万小时第一视角人类操作语料</strong>，配有手部运动与语言标注，并经过筛选、去重和动作表示对齐。</p>
+<p>当纯人类预训练数据从100小时扩大到5万小时，经统一机器人后训练后的Scene-OOD成功率从<strong>49.1%提高到73.2%</strong>，Random从<strong>21.5%提高到42.9%</strong>。数据中的任务与场景覆盖越广，性能随规模增长的趋势也越明显。</p>
+<p>在相同预训练时长、相同后训练协议的受控实验中，人类数据还展示出较高的利用效率：<strong>1,000小时人类数据预训练，在分布外测试中超过了5,000小时机器人数据预训练。</strong>在另一组少样本适应实验中，5,000小时人类预训练让每任务5条机器人示范的表现，超过未做该人类预训练、使用50条示范的基线。</p></div>
+<div class="figure-pair"><figure><button class="figure-button" data-image="assets/ego-scaling.png" aria-label="放大：纯人类数据规模扩展与机器人后训练泛化"><img src="assets/ego-scaling.png" alt="纯人类数据规模扩展与机器人后训练泛化" loading="lazy" decoding="async"></button><figcaption>纯人类数据Scaling：统一机器人任务后训练后，环境变化下的泛化收益更明显。论文Fig. 6，各条件选取最佳检查点。</figcaption></figure><figure><button class="figure-button" data-image="assets/ego-vs-robot.png" aria-label="放大：相同预训练时长的人类与机器人数据对照"><img src="assets/ego-vs-robot.png" alt="相同预训练时长的人类与机器人数据对照" loading="lazy" decoding="async"></button><figcaption>同等时长的人类／机器人预训练对照。使用相同的机器人后训练协议。论文Fig. 12。</figcaption></figure></div>
+<div class="copy"><p>沿着纯人类路线，HumanWAM-Vanilla在RoboTwin 2.0上达到92.08%的Clean2Clean、68.88%的Clean2Random成功率；在RoboDojo中，平均成功率为14.17%，平均进度得分为19.00。</p>
+<p>接下来，HumanWAM-Goal把人类经验和机器人执行监督放进同一个训练框架。纯机器人数据从2,005小时扩展至14,618小时，RoboTwin zero-shot平均成功率从<strong>2.80%升至11.48%</strong>；总计约3.05万、6.06万小时的人机混合数据，又将它继续推到<strong>13.16%和13.94%</strong>。</p>
+<p>按“每任务平均成功率至少2%”的覆盖标准，单个混合检查点覆盖22项任务，高于纯机器人最大规模版本的18项。<strong>纯human有Scaling，纯robot有Scaling，混合之后，性能与任务范围仍在继续增长。</strong></p></div>
+<div class="figure-pair"><figure><button class="figure-button" data-image="assets/hybrid-scaling.png" aria-label="放大：机器人与人机混合数据Scaling的零样本成功率"><img src="assets/hybrid-scaling.png" alt="机器人与人机混合数据Scaling的零样本成功率" loading="lazy" decoding="async"></button><figcaption>从纯机器人到人机混合，zero-shot成功率继续提高。论文Fig. 17(a)。</figcaption></figure><figure><button class="figure-button" data-image="assets/hybrid-task-coverage.png" aria-label="放大：零样本任务覆盖随机器人和人机混合数据规模扩大"><img src="assets/hybrid-task-coverage.png" alt="零样本任务覆盖随机器人和人机混合数据规模扩大" loading="lazy" decoding="async"></button><figcaption>单个检查点任务覆盖扩展至22项；不同规模检查点的累计并集为29项。论文Fig. 17(b)。</figcaption></figure></div>
+<div class="copy"><p>规模提供了经验，模型设计负责把经验接到动作上。HumanWAM是一类世界—动作模型，联合学习未来画面和动作；HumanWAM-Goal进一步引入显式视觉目标，并通过包含末端执行器、关节与底盘信息的统一动作表示，连接人手操作和机器人控制。</p></div>
+<figure class="architecture"><button class="figure-button" data-image="assets/humanwam-goal-architecture.png" aria-label="放大：HumanWAM-Goal模型架构"><img src="assets/humanwam-goal-architecture.png" alt="HumanWAM-Goal模型架构" loading="lazy" decoding="async"></button><figcaption>HumanWAM-Goal：目标图、语言、当前观测与机器人状态共同作为条件，联合生成未来视频与动作。论文Fig. 16。</figcaption></figure>
+<div class="copy"><p><strong>Goal condition给出“想做成什么样”，Scaling积累“如何做到”的经验。</strong>二者共同支撑零样本操作；在这套基础上进行任务后训练，又进一步释放出复杂视觉目标响应与长程执行能力。</p>
+<p>这也解释了为什么要把成绩与demo放在一起看：数字记录能力如何随规模提高，行为展示这些能力如何被调用。一次次具体的抓取、收纳和连续家务，让人机共同积累的经验有了可观察的落点。</p></div>
+</section>
+
+<section class="closing"><div><span class="eyebrow">FROM EXPERIENCE TO ACTION</span><h2>更多经验。<br>更多本领。<br><em>更多可以交给机器人的事。</em></h2><p>HumanWAM将人类与机器人经验连接起来，把Scaling的增长，推进到零样本操作、目标响应和连续执行。</p><div class="closing-links"><a href="https://dagroup-pku.github.io/open-humanscale/" target="_blank" rel="noopener">项目与更多演示 ↗</a><a href="https://arxiv.org/pdf/2611.06817" target="_blank" rel="noopener">阅读论文 ↗</a></div></div></section>
+<footer class="source-notes"><p><b>资料与评测口径</b> 本文根据论文第3—6节及项目演示整合重写。真机zero-shot采用20项任务、每项10次试验；RoboTwin zero-shot为预训练检查点直接评测，后训练成绩来自目标任务适配。复杂Visual Goal ICL、人类目标图与长程任务使用任务后训练后的策略，推理时参数冻结。各demo用于展示行为。</p><p>88.65%为论文报告的SOTA配置，包含额外后训练优化；不与受控Scaling曲线混作同一配方。榜单动画沿用前稿所据的2026-11-05论文与项目素材，实时条目可查阅<a href="https://robotwin-platform.github.io/leaderboard" target="_blank" rel="noopener">RoboTwin官方榜单</a>。作者团队来自北京大学、新加坡国立大学、麻省理工学院、加州大学圣塔芭芭拉分校和NVIDIA。</p><div class="footer-bottom"><span>HUMANWAM / 独立综合稿</span><a href="#top">回到顶部 ↑</a></div></footer>
+</main>
+<dialog id="figure-dialog" aria-labelledby="figure-caption"><div class="dialog-bar"><p id="figure-caption"></p><button type="button" data-close aria-label="关闭放大图片">关闭 ×</button></div><img alt=""></dialog>
+<div class="toast" role="status" aria-live="polite" hidden></div>
+</body></html>
